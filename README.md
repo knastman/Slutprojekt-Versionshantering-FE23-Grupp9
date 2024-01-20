@@ -1,8 +1,8 @@
 # Slutprojekt - Versionshanter FE23 (Grupp 9)
 ### Gritsquare messageboard
 
-Uppgiften är att skapa en hemsida med en messageboard som sparar meddelanden.
+Uppgiften är att skapa en site med en messageboard som sparar meddelanden med hjälp av Firebase. 
 
-#### Grupp 9
+#### Gruppmedlemmar
 * Petra Hastman
 * André Iskra Jönsson
