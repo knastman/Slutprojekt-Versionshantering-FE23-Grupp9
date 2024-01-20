@@ -50,13 +50,7 @@ img{
   align-items: center;
   justify-content: space-between;
   background-color: #00BAF0;
-  /* background: linear-gradient(to left, #ef5125, #eea849);
-  background: linear-gradient(to left, #f46b45, #f4d755);
-  background: linear-gradient(to left, #6be89b, #0076a5);
-  background: linear-gradient(to left, #6be4e8, #0076a5);
-  background: linear-gradient(to left, #6be8c3, #0076a5); */
   background: linear-gradient(to left, #6be8c3, #0076a5);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #FFF;
   height: 50px;
   padding: 1em;
@@ -144,42 +138,28 @@ img{
 .message{
   height:auto;
   max-width:300px;
+  font-size: 0.9em;
   padding:10px;
   margin:10px;
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
 }
-.message1{
-  height:auto;
+
+
+/* .message1{
   width:200px;
-  padding:10px;
   margin:30px;
-  color:#33353d;
-  background: linear-gradient(to left, #57be9f, #6be8c3);
-  background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
 }
 .message2{
-  height:auto;
-  width:200px;
-  padding:10px;
-  margin:30px;
-  color:#33353d;
-  background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
   position:absolute;
   left:40%;
   top:30%;
 }
 .message3{
-  height:auto;
-  width:200px;
-  padding:10px;
-  margin:30px;
-  color:#33353d;
-  background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
   position:absolute;
   left:10%;
   top:50%;
-}
+} */
 
 
 
