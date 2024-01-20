@@ -41,6 +41,29 @@ img{
 
 
 
+h1,h2,h3,h4,h5,h6 {
+  margin: 0.5em 0 0.5em 0;
+}
+
+h1 {
+  font-size: 1.3rem;
+  margin: 1.5em 0 0.5em 0;
+}
+
+h2 {
+  font-size: 0.95rem;
+  margin: 1em 0 0.5em 0;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+p:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+
 
 /****** Header Menu *******/
 
@@ -51,13 +74,16 @@ img{
   justify-content: space-between;
   background-color: #00BAF0;
   background: linear-gradient(to left, #6be8c3, #0076a5);
+  color:#0076a5;
+  color:#04b2f7;
   color: #FFF;
+  font-weight: 600;
   height: 50px;
   padding: 1em;
 }
-.top-nav div:first-child{
-  font-weight: 600;;
-}
+/* .top-nav div:first-child{
+  font-weight: 600;
+} */
 
 .menu {
   display: flex;
@@ -65,19 +91,22 @@ img{
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-size: 1.2rem;
 }
 
 .menu > li {
   margin: 0 1rem;
   overflow: hidden;
+  
 }
 
 .menu > li a{
+  color:#0076a5;
   color:#FFF;
+  font-weight: 400;
   text-decoration: none;
 }
 .menu > li a:hover{
-  color:#FFF;
   text-decoration: underline;
 }
 
