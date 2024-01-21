@@ -1,6 +1,7 @@
 import {getMessages } from './modules/api.js';
 import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
 // import {messageInput, messagesContainer, sendMessage} from './modules/script.js';
+import {messageInput, messagesContainer, sendMessage} from './modules/messages.js';
 
 
 
@@ -11,7 +12,6 @@ import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/inte
 
 
 window.addEventListener("load", onPageLoad);
-
 function onPageLoad(){
   getMessages()
   .then(displayMessage)
@@ -19,8 +19,10 @@ function onPageLoad(){
 }
 
 
-
-
+document.getElementById("messageForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendMessage();
+});
 
 
 
