@@ -15,7 +15,7 @@
   <header>
     <div class="top-nav">
       <div>
-        Gritsquare - message board
+        Gritsquare
       </div>
       <input id="menu-toggle" type="checkbox" />
       <label class='menu-button-container' for="menu-toggle">
@@ -32,16 +32,15 @@
     <section class="form">
       <!-- Message form -->
       <div id="messageBoard">
-        <div id="messages"></div>
         <form id="messageForm">
-          <input type="text" id="userName" placeholder="Användarnamn">
-          <input type="text" id="messageInput" placeholder="Ditt meddelande här">
+          <div><input type="text" id="userName" placeholder="Användarnamn"></div>
+          <div><input type="text" id="messageInput" placeholder="Ditt meddelande här"></div>
           <!-- <input type="submit" value="Skicka"> -->
           <button type="submit" id="send-button">Skicka</button>
         </form>
       </div>
     </section>
-    
+
     <div class="wrapper">
 
       <section id="errorContainer" class="hide">
@@ -53,7 +52,7 @@
         <!-- Messages shown here -->
 
         <!-- Mall för meddelanden-->
-        
+        <!-- <div id="messages"></div> -->
         <div class="message">
           <div class="messageHeader">
             <div><h3>Fry</h3></div>
