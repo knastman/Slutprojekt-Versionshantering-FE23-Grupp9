@@ -163,16 +163,36 @@ p:nth-last-child(1) {
 
 
 /******* MAIN*******/
-
+.messagesContainer{
+  background-color: #222;
+  opacity: 0.75;
+}
 .message{
   height:auto;
   max-width:300px;
   font-size: 0.9em;
-  padding:10px;
   margin:10px;
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
 }
+.message h3{
+  font-size: 1.2em;
+  margin:0;
+}
+
+.messageHeader{
+  background-color: #00BAF0;
+  background-color: #5ec4a5;
+  padding:5px;
+  display:flex;
+  justify-content: space-between;
+}
+.messageBody{
+  padding:10px;
+}
+
+
+
 
 
 /* .message1{

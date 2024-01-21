@@ -23,14 +23,27 @@ export function displayMessage(messages){
     const messageContainer = document.createElement('article');
     messageContainer.classList.add("message");
 
-    const messageHeader = document.createElement('h3');
+    const messageHeader = document.createElement('div');
+    const messageHeaderDiv1 = document.createElement('div');
+    const messageHeaderDiv2 = document.createElement('div');
+    const messageBody = document.createElement('div');
+
+    const messageHeaderText = document.createElement('h3');
     const messageText = document.createElement('p');
    
     messagesSection.append(messageContainer);
-    messageContainer.append(messageHeader, messageText);
+    messageContainer.append(messageHeader, messageBody);
+    
+    messageHeader.classList.add("messageHeader");
+    messageBody.classList.add("messageBody");
 
-    messageHeader.innerText = messageid;
+    messageHeader.append(messageHeaderDiv1,messageHeaderDiv2);
+    messageHeaderDiv1.append(messageHeaderText);
+    messageBody.append(messageText);
+
+    messageHeaderText.innerText = messageid;
     messageText.innerText =  message;
+    messageHeaderDiv2.innerText = "19.43 | 24-01-21"
     // messageContainer.setAttribute("id", message.id);
   }
 }
