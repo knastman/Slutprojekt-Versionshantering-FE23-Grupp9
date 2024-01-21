@@ -1,7 +1,5 @@
 import {getMessages } from './modules/api.js';
 import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
-// import {messageInput, messagesContainer, sendMessage} from './modules/script.js';
-
 
 
 
@@ -12,11 +10,15 @@ import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/inte
 
 
 window.addEventListener("load", onPageLoad);
+
 function onPageLoad(){
   getMessages()
   .then(displayMessage)
   // .catch(displayError);
 }
+
+
+
 
 
 
