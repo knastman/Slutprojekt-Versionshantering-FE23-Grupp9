@@ -163,15 +163,49 @@ p:nth-last-child(1) {
 
 
 /******* MAIN*******/
-.messagesContainer{
-  background-color: #222;
-  opacity: 0.75;
+
+.form{
+  background-color: #272727;
+  padding:10px 0 10px 0;
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+  width:100vw;
+  
+}
+
+.form input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  /* width: 100%; */
+  padding: 5px;
+  font-size: 0.9rem;
+  color: #1b2d2d;
+}
+
+.form button {
+  background-image: linear-gradient(#f7f8fa, #e7e9ec);
+  border-color: #7a7e84 #797c82 #5a5959#5a5959;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #414e4e;
+  font-size: 0.9rem;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+
+
+#messagesContainer{
+  /* background-color: #272727;
+  opacity: 0.95; */
+  margin-top:10px;
 }
 .message{
   height:auto;
   max-width:300px;
   font-size: 0.9em;
-  margin:10px;
+  margin:10px 0 10px 0;
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
 }

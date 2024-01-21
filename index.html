@@ -29,26 +29,31 @@
     </div>  
   </header>
   <main>
+    <section class="form">
+      <!-- Message form -->
+      <div id="messageBoard">
+        <div id="messages"></div>
+        <form id="messageForm">
+          <input type="text" id="userName" placeholder="Användarnamn">
+          <input type="text" id="messageInput" placeholder="Ditt meddelande här">
+          <!-- <input type="submit" value="Skicka"> -->
+          <button type="submit" id="send-button">Skicka</button>
+        </form>
+      </div>
+    </section>
+    
     <div class="wrapper">
+
       <section id="errorContainer" class="hide">
         <h2 id="errorMessage"></h2>
       </section> 
-      <section class="form">
-        <!-- Message form -->
-        <div id="messageBoard">
-          <div id="messages"></div>
-          <form id="messageForm">
-            <input type="text" id="messageInput" placeholder="Börja chatta">
-            <input type="submit" value="Skicka">
-          </form>
-        </div>
-      </section>
+
 
       <section id="messagesContainer">
         <!-- Messages shown here -->
 
         <!-- Mall för meddelanden-->
-        <!--
+        
         <div class="message">
           <div class="messageHeader">
             <div><h3>Fry</h3></div>
@@ -58,7 +63,7 @@
           Yes! In your face, Gandhi! That's right, baby. I ain't your loverboy Flexo, the guy you love so much. You even love anyone pretending to be him! And until then, I can never die? Negative, bossy meat creature!
           </div>
         </div>
-         -->
+        
         
       </section>
     </div>
