@@ -7,41 +7,49 @@
   Main interface css
 **************************************/
 
-
 * {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
-
-html, body {
-  font-size: 14px;  
+html,
+body {
+  font-size: 14px;
   font-family: "Red Hat Display", sans-serif;
   background: #33353d;
-  color:#fff;
+  color: #fff;
 }
-body{
+body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-img{
-  max-width:100%;
+img {
+  max-width: 100%;
 }
 
-.hide{
+.hide {
   display: none;
 }
-.wrapper{
-  width:70vw;
-  margin:0 auto;
+.wrapper {
+  width: 70vw;
+  margin: 0 auto;
 }
 
+/* Här lägger jag styling för länk */
+a {
+  text-decoration: none;
+  color: white;
+}
 
-
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0.5em 0 0.5em 0;
 }
 
@@ -63,8 +71,6 @@ p:nth-last-child(1) {
   margin-bottom: 0;
 }
 
-
-
 /****** Header Menu *******/
 
 .top-nav {
@@ -72,11 +78,11 @@ p:nth-last-child(1) {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #00BAF0;
+  background-color: #00baf0;
   background: linear-gradient(to left, #6be8c3, #0076a5);
-  color:#0076a5;
-  color:#04b2f7;
-  color: #FFF;
+  color: #0076a5;
+  color: #04b2f7;
+  color: #fff;
   font-weight: 600;
   height: 50px;
   padding: 1em;
@@ -97,16 +103,15 @@ p:nth-last-child(1) {
 .menu > li {
   margin: 0 1rem;
   overflow: hidden;
-  
 }
 
-.menu > li a{
-  color:#0076a5;
-  color:#FFF;
+.menu > li a {
+  color: #0076a5;
+  color: #fff;
   font-weight: 400;
   text-decoration: none;
 }
-.menu > li a:hover{
+.menu > li a:hover {
   text-decoration: underline;
 }
 
@@ -137,12 +142,12 @@ p:nth-last-child(1) {
 }
 
 .menu-button::before {
-  content: '';
+  content: "";
   margin-top: -8px;
 }
 
 .menu-button::after {
-  content: '';
+  content: "";
   margin-top: 8px;
 }
 
@@ -153,7 +158,7 @@ p:nth-last-child(1) {
 
 #menu-toggle:checked + .menu-button-container .menu-button {
   background: rgba(255, 255, 255, 0);
-  background:#0076a5;
+  background: #0076a5;
 }
 
 #menu-toggle:checked + .menu-button-container .menu-button::after {
@@ -161,19 +166,17 @@ p:nth-last-child(1) {
   transform: rotate(-405deg);
 }
 
-
 /******* MAIN*******/
 
-.message{
-  height:auto;
-  max-width:300px;
+.message {
+  height: auto;
+  max-width: 300px;
   font-size: 0.9em;
-  padding:10px;
-  margin:10px;
-  color:#33353d;
+  padding: 10px;
+  margin: 10px;
+  color: #33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
 }
-
 
 /* .message1{
   width:200px;
@@ -190,17 +193,13 @@ p:nth-last-child(1) {
   top:50%;
 } */
 
-
-
-
 /****Footer *****/
 
 .main-footer {
-  background-color:aquamarine;
+  background-color: aquamarine;
   /* background: linear-gradient(to left, #f46b45, #f4d755); */
   background: linear-gradient(to left, #6be89b, #0076a5);
 
-  
   color: #fff;
   display: flex;
   align-items: center;
@@ -228,15 +227,12 @@ p:nth-last-child(1) {
 }
 
 .main-footer a {
-  color:#6be89b;
+  color: #6be89b;
 }
 
 .main-footer a:hover {
   color: #fff;
 }
-
-
-
 
 /********************* MEDIA QUERIES ****************/
 
@@ -287,7 +283,6 @@ p:nth-last-child(1) {
 /* Desktop Styles */
 
 @media only screen and (min-width: 701px) {
-
   .main-footer {
     align-items: center;
     justify-content: flex-end;
@@ -300,6 +295,3 @@ p:nth-last-child(1) {
     font-size: 0.7em;
   } */
 }
-
-
-
