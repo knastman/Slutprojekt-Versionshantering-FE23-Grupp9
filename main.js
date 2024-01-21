@@ -1,6 +1,6 @@
 import {getMessages } from './modules/api.js';
 import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
-
+import {messageInput, messagesContainer, sendMessage} from './modules/script.js';
 
 // getMessages();
 // console.log(getMessages());
