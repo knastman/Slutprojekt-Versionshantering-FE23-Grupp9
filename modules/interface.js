@@ -13,7 +13,7 @@ export function displayMessage(messages){
   const messageObj = messages.Messages;
   console.log('messageObj');
   console.log(messageObj);
-  const messagesSection = document.querySelector('#messages');
+  const messagesSection = document.querySelector('#messagesContainer');
 
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
