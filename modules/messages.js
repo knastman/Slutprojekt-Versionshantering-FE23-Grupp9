@@ -8,7 +8,7 @@ export function handlePostForm() {
   postForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const postText = document.getElementById('postText').value;
+    const postText = document.getElementById('messageInput').value;
 
     const newPostRef = push(ref(db, 'posts'));
 
