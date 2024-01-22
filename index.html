@@ -15,7 +15,7 @@
   <header>
     <div class="top-nav">
       <div>
-        Gritsquare - message board
+        Gritsquare
       </div>
       <input id="menu-toggle" type="checkbox" />
       <label class='menu-button-container' for="menu-toggle">
@@ -29,31 +29,40 @@
     </div>  
   </header>
   <main>
+    <section class="form">
+      <!-- Message form -->
+      <div id="messageBoard">
+        <form id="messageForm">
+          <div><input type="text" id="userName" placeholder="Användarnamn"></div>
+          <div><input type="text" id="messageInput" placeholder="Ditt meddelande här"></div>
+          <!-- <input type="submit" value="Skicka"> -->
+          <button type="submit" id="send-button">Skicka</button>
+          <div id="messages"></div>
+        </form>
+      </div>
+    </section>
+
     <div class="wrapper">
+
       <section id="errorContainer" class="hide">
         <h2 id="errorMessage"></h2>
       </section> 
 
-      <section id="Messages">
-        <div id="messageBoard">
-          <form id="messageForm">
-            <label for="postText">Meddelande:</label>
-            <input type="text" id="postText" placeholder="Skriv något...">
-            <input type="submit" value="Skicka">
-            <div id="messages"></div>
-          </form>
-        </div>
+      <section id="messagesContainer">
         <!-- Messages shown here -->
 
-        <!-- <div class="message message1">
+        <!-- Mall för meddelanden-->
+        <div class="message">
+          <div class="messageHeader">
+            <div><h3>Fry</h3></div>
+            <div>19.43 | 24-01-21</div>
+          </div>
+          <div class="messageBody">
           Yes! In your face, Gandhi! That's right, baby. I ain't your loverboy Flexo, the guy you love so much. You even love anyone pretending to be him! And until then, I can never die? Negative, bossy meat creature!
+          </div>
         </div>
-        <div class="message message2">
-          Whoa a real live robot; or is that some kind of cheesy New Year's costume? Oh, I think we should just stay friends. Now Fry, it's been a few years since medical school, so remind me. Disemboweling in your species: fatal or non-fatal?      
-        </div>
-        <div class="message message3">
-          OK, if everyone's finished being stupid. Take me to your leader! Oh God, what have I done? What are you hacking off? Is it my torso?! 'It is!' My precious torso! Robot 1-X, save my friends! And Zoidberg!
-        </div> -->
+        
+        
       </section>
     </div>
   </main>

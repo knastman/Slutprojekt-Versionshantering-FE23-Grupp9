@@ -1,5 +1,7 @@
-//import {getMessages } from './modules/api.js';
-//import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
+
+
+import {getMessages } from './modules/api.js';
+import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
 import { handlePostForm } from './modules/messages.js';
 
 handlePostForm();
@@ -17,6 +19,11 @@ handlePostForm();
   // .catch(displayError);
 //}
 
+//Andrés formulär
+document.getElementById("messageForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendMessage();
+});
 
 
 
