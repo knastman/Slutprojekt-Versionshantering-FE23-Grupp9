@@ -6,9 +6,7 @@ import { handlePostForm } from './modules/messages.js';
 
 handlePostForm();
 // getMessages();
-// console.log(getMessages());
-// console.log(getRandomIntTop());
-// console.log(getRandomIntLeft());
+
 
 
 //window.addEventListener("load", onPageLoad);
