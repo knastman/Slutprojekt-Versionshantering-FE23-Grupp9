@@ -3,13 +3,15 @@ import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.co
 
 export function handlePostForm() {
   const postForm = document.getElementById('messageForm');
+
   const messagesContainer = document.getElementById("messages");
+  //Jag tror denna måste ändras till nedan
+  //const messagesContainer = document.getElementById("messagesContainer");
 
   postForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const postText = document.getElementById('messageInput').value;
-
     const newPostRef = push(ref(db, 'posts'));
 
     const postData = {
@@ -18,9 +20,10 @@ export function handlePostForm() {
     };
 
     set(newPostRef, postData);
-
     postForm.reset();
   });
+
+
 
   function sendMessage(message, timestamp) {
     const messageDiv = document.createElement("div");
@@ -30,6 +33,8 @@ export function handlePostForm() {
     messagesContainer.appendChild(messageDiv);
   }
 
+
+  //Hämtar meddelanden
   onValue(ref(db, 'posts'), (snapshot) => {
     const posts = snapshot.val();
     messagesContainer.innerHTML = '';

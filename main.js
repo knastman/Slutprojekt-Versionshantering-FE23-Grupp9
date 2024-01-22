@@ -1,7 +1,7 @@
 
 
 import {getMessages } from './modules/api.js';
-import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
+// import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
 import { handlePostForm } from './modules/messages.js';
 
 handlePostForm();
@@ -20,6 +20,7 @@ handlePostForm();
 //}
 
 //Andrés formulär
+//Går denna bytas ut till den faktistka eventlistnern så det bara finns en? 
 document.getElementById("messageForm").addEventListener("submit", (event) => {
   event.preventDefault();
   sendMessage();

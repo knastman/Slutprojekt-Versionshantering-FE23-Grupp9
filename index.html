@@ -29,18 +29,16 @@
     </div>  
   </header>
   <main>
-    <section class="form">
-      <!-- Message form -->
+    <!-- <section class="form">
       <div id="messageBoard">
         <form id="messageForm">
           <div><input type="text" id="userName" placeholder="Användarnamn"></div>
           <div><input type="text" id="messageInput" placeholder="Ditt meddelande här"></div>
-          <!-- <input type="submit" value="Skicka"> -->
           <button type="submit" id="send-button">Skicka</button>
           <div id="messages"></div>
         </form>
       </div>
-    </section>
+    </section> -->
 
     <div class="wrapper">
 
@@ -48,7 +46,19 @@
         <h2 id="errorMessage"></h2>
       </section> 
 
+      <section id="Messages">
+        <div id="messageBoard">
+          <form id="messageForm">
+            <label for="postText">Meddelande:</label>
+            <input type="text" id="postText" placeholder="Skriv något...">
+            <input type="submit" value="Skicka">
+            <div id="messages"></div>
+          </form>
+        </div>
+
+      
       <section id="messagesContainer">
+
         <!-- Messages shown here -->
 
         <!-- Mall för meddelanden-->
