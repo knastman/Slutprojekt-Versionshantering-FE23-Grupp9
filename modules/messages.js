@@ -1,4 +1,3 @@
-//kan tas bort
 
 /*import { db } from './api.js';
 import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
