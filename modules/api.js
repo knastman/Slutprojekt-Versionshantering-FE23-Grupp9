@@ -2,24 +2,17 @@
 import { initializeApp} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
 import { getDatabase } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 import { firebaseConfig } from './apiconfig.js';
-// import { getDatabase, onValue, push, ref} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-// import { collection, getDocs  } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js"; //exempel från docs
-
-
-/***************SCRIPTEXEMPEL  *************/
-
-//import { getDatabase, ref, set, onValue, remove, push, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js"; // <---
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export { app, db };
-
 
 //Gritsquare databas
 const BASE_URL = `https://versionshantering---gritsquare-default-rtdb.europe-west1.firebasedatabase.app/.json`;
+
+
+export { app, db };
 
 
 //async function getMessages() {
