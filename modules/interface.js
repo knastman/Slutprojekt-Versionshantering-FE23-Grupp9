@@ -1,22 +1,32 @@
 const allSections = document.querySelectorAll('section');
 
-
+import { db } from './api.js';
+import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 /*********************************
  Display message
 **********************************/
 
-export function displayMessage(messages){
+
+export function displayMessage(messages) {
+  
   // console.log(messages);
   // console.log(messages.Messages);
   // console.log(messages.Messages.message1);
+  
   const messageObj = messages.Messages;
+  
   console.log('messageObj');
   console.log(messageObj);
+  
   const messagesSection = document.querySelector('#messagesContainer');
 
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
+
+  handlePostForm()
+
+  messagesSection.innerHTML = '';
 
   for (const messageid of Object.keys(messageObj)) {
     const message = messageObj[messageid];
@@ -30,22 +40,49 @@ export function displayMessage(messages){
 
     const messageHeaderText = document.createElement('h3');
     const messageText = document.createElement('p');
-   
+
     messagesSection.append(messageContainer);
     messageContainer.append(messageHeader, messageBody);
-    
+
     messageHeader.classList.add("messageHeader");
     messageBody.classList.add("messageBody");
 
-    messageHeader.append(messageHeaderDiv1,messageHeaderDiv2);
+    messageHeader.append(messageHeaderDiv1, messageHeaderDiv2);
     messageHeaderDiv1.append(messageHeaderText);
     messageBody.append(messageText);
 
     messageHeaderText.innerText = messageid;
-    messageText.innerText =  message;
-    messageHeaderDiv2.innerText = "19.43 | 24-01-21"
+    messageText.innerText = message.text;
+    messageHeaderDiv2.innerText = "19.43 | 24-01-21";
+    
     // messageContainer.setAttribute("id", message.id);
   }
+}
+
+onValue(ref(db, 'posts'), (snapshot) => {
+  const posts = snapshot.val();
+  displayMessage({ Messages: posts });
+});
+
+function handlePostForm() {
+  const postForm = document.getElementById('messageForm');
+
+  postForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const postText = document.getElementById('messageInput').value;
+
+    const newPostRef = push(ref(db, 'posts'));
+
+    const postData = {
+      text: postText,
+      timestamp: serverTimestamp()
+    };
+
+    await set(newPostRef, postData);
+
+    postForm.reset();
+  });
 }
 
 

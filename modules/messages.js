@@ -1,11 +1,13 @@
-import { db } from './api.js';
+//kan tas bort
+
+/*import { db } from './api.js';
 import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 export function handlePostForm() {
   const postForm = document.getElementById('messageForm');
   const messagesContainer = document.getElementById("messages");
 
-  postForm.addEventListener('submit', (e) => {
+  postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const postText = document.getElementById('messageInput').value;
@@ -17,17 +19,14 @@ export function handlePostForm() {
       timestamp: serverTimestamp()
     };
 
-    set(newPostRef, postData);
+    await set(newPostRef, postData);
 
     postForm.reset();
   });
 
   function sendMessage(message, timestamp) {
-    const messageDiv = document.createElement("div");
-    const normalTime = new Date(timestamp).toLocaleString();
-    messageDiv.innerHTML = normalTime + " " + message;
-    messageDiv.classList.add("message");
-    messagesContainer.appendChild(messageDiv);
+
+    displayMessage({ Messages: { [timestamp]: message } });
   }
 
   onValue(ref(db, 'posts'), (snapshot) => {
@@ -39,4 +38,4 @@ export function handlePostForm() {
       sendMessage(post.text, post.timestamp);
     }
   });
-}
+}*/
