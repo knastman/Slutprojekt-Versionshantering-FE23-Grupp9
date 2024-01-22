@@ -5,7 +5,7 @@ export function handlePostForm() {
   const postForm = document.getElementById('messageForm');
   const messagesContainer = document.getElementById("messages");
 
-  postForm.addEventListener('submit', function (e) {
+  postForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const postText = document.getElementById('postText').value;
@@ -22,9 +22,10 @@ export function handlePostForm() {
     postForm.reset();
   });
 
-  function sendMessage(message) {
+  function sendMessage(message, timestamp) {
     const messageDiv = document.createElement("div");
-    messageDiv.innerText = message;
+    const normalTime = new Date(timestamp).toLocaleString();
+    messageDiv.innerHTML = normalTime + " " + message;
     messageDiv.classList.add("message");
     messagesContainer.appendChild(messageDiv);
   }
@@ -35,7 +36,7 @@ export function handlePostForm() {
 
     for (const postId in posts) {
       const post = posts[postId];
-      sendMessage(post.text);
+      sendMessage(post.text, post.timestamp);
     }
   });
 }
