@@ -19,8 +19,7 @@
 .form{
   /* width:100vw; */
   /* height:100%; */
-  background-color: #272727;
-  
+  background-color: #272727; 
 }
 
 
@@ -33,6 +32,9 @@
   flex-direction: column;
   gap:8px;
   /* width:100vw; */
+}
+#messageForm span{
+  font-size: 0.8em;
 }
 
 #messageForm{
@@ -238,10 +240,6 @@
     /* margin: 0 auto; */
     margin-left:20px;
   }
-
-
-
-
 
   /* #messageForm{
     display:flex;

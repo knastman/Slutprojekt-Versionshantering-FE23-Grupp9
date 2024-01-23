@@ -53,7 +53,7 @@ export function displayMessage(messages) {
     
     //Delete messeges
     const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Delete';
+    deleteButton.innerText = 'Radera';
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => DeleteMessage(messageid));
 
@@ -164,8 +164,8 @@ function displayError(error) {
     message = 'Something went wrong, try again later.' 
   }
   
-  const errorMessageHeader = document.querySelector('#errorMessage');
-  errorMessageHeader.innerText = message;
+  const errorMessage = document.querySelector('#errorMessage');
+  errorMessage.innerText = message;
 
 }
 
