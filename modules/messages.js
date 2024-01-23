@@ -30,7 +30,7 @@ export function displayMessage(messages) {
 
   messagesSection.innerHTML = '';
 
-  for (const messageid of Object.keys(messageObj)) {
+  for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
     const messageContainer = document.createElement('article');
     messageContainer.classList.add("message");
