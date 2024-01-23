@@ -1,5 +1,5 @@
 import { db } from './api.js';
-import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+import { push, serverTimestamp, set, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 const allSections = document.querySelectorAll('section');
 
@@ -61,10 +61,22 @@ export function displayMessage(messages) {
 }
 
 // Hämtar meddelanden från databasen
-onValue(ref(db, 'posts'), (snapshot) => {
-  const posts = snapshot.val();
-  displayMessage({ Messages: posts });
-});
+// onValue(ref(db, 'posts'), (snapshot) => {
+//   const posts = snapshot.val();
+//   displayMessage({ Messages: posts });
+// });
+
+
+get(ref(db, 'posts'))
+  .then((snapshot) => {
+    //'snapshot.exists' checks data is available or its null
+    // And return boolean value
+    if (snapshot.exists) {
+      const posts = snapshot.val();
+      displayMessage({ Messages: posts });
+    }
+  })
+  .catch((error) => console.log(error));
 
 
 /****************************************
