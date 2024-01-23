@@ -65,7 +65,11 @@ p:nth-last-child(1) {
 
 header{
   width: 100%;
+}
 
+.logo{
+  width:150px;
+  padding-top:5px;
 }
 
 .top-nav {
