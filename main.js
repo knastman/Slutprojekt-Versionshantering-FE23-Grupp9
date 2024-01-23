@@ -1,14 +1,14 @@
+//Blir felmeddelande varje gång den är öppen
+//import {getMessages } from './modules/api.js';
 
-
-import {getMessages } from './modules/api.js';
-// import {displayMessage, getRandomIntTop, getRandomIntLeft } from './modules/interface.js'; 
-import { handlePostForm } from './modules/messages.js';
+ 
+import { displayMessage, handlePostForm } from './modules/messages.js';
 
 handlePostForm();
 // getMessages();
 
 
-
+//vad är detta?
 //window.addEventListener("load", onPageLoad);
 
 //function onPageLoad(){
@@ -17,12 +17,7 @@ handlePostForm();
   // .catch(displayError);
 //}
 
-//Andrés formulär
-//Går denna bytas ut till den faktistka eventlistnern så det bara finns en? 
-document.getElementById("messageForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-  sendMessage();
-});
+
 
 
 
