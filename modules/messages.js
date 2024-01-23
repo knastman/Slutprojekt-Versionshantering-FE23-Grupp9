@@ -76,7 +76,10 @@ get(ref(db, 'posts'))
       displayMessage({ Messages: posts });
     }
   })
-  .catch((error) => console.log(error));
+  //.catch((error) => console.log(error));
+  .catch((error) => messagesSection.innerText = error);
+  // messagesSection.innerText = 'Det går inte att läsa databasen';
+
 
 
 /****************************************
@@ -109,18 +112,6 @@ export function handlePostForm() {
     postTextInput.focus();
   });
 }
-
-
-function writeUserData(userId, name, email, imageUrl) {
-  const db = getDatabase();
-  set(ref(db, 'users/' + userId), {
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}
-
-
 
 
 /****************************************
