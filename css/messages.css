@@ -25,7 +25,7 @@
 
 
 #messageForm{
-  /* background-color: #272727; */
+  background-color: #272727;
   padding:10px 0 10px 0;
   display:flex;
   align-items: center;
@@ -76,22 +76,48 @@
 }
 
 
+.intro-text{
+  padding:5px 15px 10px 15px;
+  border-top:1px solid #656464;
+}
+
+
 
 
 /*********  Messages *****/
 #messagesContainer{
-  /* background-color: #272727;
-  opacity: 0.95; */
+  /* background-color: #272727; */
+  /* opacity: 0.95;  */
   margin-top:10px;
   display:grid;
 }
+
+.messages {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-auto-rows: 8em; */
+  grid-auto-rows: auto;
+  grid-gap: .7em;
+  align-items: center;
+  /* display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:10px; 
+  box-decoration-break: clone; */
+  padding: .5em;
+  margin-bottom:15px;
+  /* border: 2px solid red; */
+}
+
 .message{
   height:auto;
-  /* max-width:300px; */
   font-size: 0.9em;
   /* margin:10px 0 10px 0; */
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+ 
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .message h3{
   font-size: 1.2em;
@@ -150,69 +176,60 @@
     grid-template-columns: 300px 3fr;
     grid-template-rows: 1fr;
     column-gap: 15px;
-    height:100%;
+    /* height:100%;
+    height:100vw; */
     /* grid-auto-columns: ; */
-
-
     /* display:flex;
     justify-content: space-between; */
+
   }
 
 
-  #messagesContainer {
-    column-width: 200px;
-    max-width: 1200px;
-
-    margin: 0 auto;
-  }
-
-
-  .messages {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 8em;
-    grid-auto-rows: auto;
-    grid-gap: .7em;
-    align-items: center;
-    /* background: #eee; */
-    /* padding: .5em; */
-    box-decoration-break: clone;
-    border-radius: 2px;
-    margin-bottom:15px;
-    /* border: 2px solid red; */
-  }
-
-  /* #messagesContainer > article{
-    /* max-width: 300px; */
-    /* max-width:45%; */
-  /* }  */
-
-  /* #messagesContainer {
-    width:90%;
-  } */
-
-  
   #messageForm{
+    background-color: #272727;
+    display:grid;
     padding:10px 0 10px 0;
     /* display:flex;
     align-items: center;
     justify-content:space-around;
     flex-direction: column;
     gap:5px; */
-  }
-  
-  #messageForm{
-    background-color: #272727;
-    display:grid;
+    
   }
   .form{
     background-color: #272727;
-
+    /* height:100%; */
+    /* height:100vw; */
   }
-  
   #messageForm div{
     margin:0 20px 0 20px;
   }
+
+
+  .messages > article{
+    max-width: 700px;
+    /* max-width:60%; */
+  } 
+
+  /* #messagesContainer {
+    width:90%;
+  } */
+
+  .intro-text{
+    padding:20px 20px 40px 20px;
+    /* height:100%;
+    height:20vw; */
+  }
+
+
+  #messagesContainer {
+    column-width: 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+
+
 
 
   /* #messageForm{
@@ -222,7 +239,6 @@
   } */
   
 
-  
 
   /* .copyright {
     font-size: 0.7em;
