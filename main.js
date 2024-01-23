@@ -2,7 +2,7 @@
 //import {getMessages } from './modules/api.js';
 
  
-import { displayMessage, handlePostForm } from './modules/messages.js';
+import { displayMessage, handlePostForm, DeleteMessage } from './modules/messages.js';
 
 handlePostForm();
 // getMessages();
