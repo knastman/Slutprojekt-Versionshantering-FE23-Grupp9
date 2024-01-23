@@ -4,7 +4,7 @@ Vi är dessvärre inte klara med grunden än men tar supergärna emot contrubute
 
 Nedan är lista på saker ni kan lägga till
 
-* Meddelanden har hover effekt för att visa detaljer/time of creation.
+
 * Baserat på tidpunkt så ska vissa meddelanden gömmas.
 * Random meddelanden blir “Message of the day”
 * Man kan måste ha unika display namn.
