@@ -4,8 +4,10 @@ import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.co
 const allSections = document.querySelectorAll('section');
 
 /****************************************
-  Hämtar meddelanden och visa meddelande
+  Hämtar och visa meddelande
 *****************************************/
+
+
 
 export function displayMessage(messages) {
   
@@ -20,6 +22,8 @@ export function displayMessage(messages) {
   
   const messagesSection = document.querySelector('#messagesContainer');
 
+  /*******André - jag tänkte först att vi inte skulle ha sidor utan sections, därför jag la in denna funktionen, vet fortfarnde inte om det är bättre att ha separata sidor eller inte, vad tycker du? ****/
+  
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
 
@@ -60,10 +64,16 @@ export function displayMessage(messages) {
   }
 }
 
+
 onValue(ref(db, 'posts'), (snapshot) => {
   const posts = snapshot.val();
   displayMessage({ Messages: posts });
 });
+
+
+/****************************************
+Formulär - lägger in meddelanden till databasen
+*****************************************/
 
 export function handlePostForm() {
   const postForm = document.getElementById('messageForm');
