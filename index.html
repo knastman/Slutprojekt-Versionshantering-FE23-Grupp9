@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/3a14b5ad60.js" crossorigin="anonymous"></script>
   <script type='module' src="main.js"></script>
   <link href="./css/mainstyles.css" rel="stylesheet" />
+  <link href="./css/messages.css" rel="stylesheet" />
   <title>Gritsquare - Slutprojekt - Versionshantering</title>
 </head>
 <body>
@@ -28,9 +29,12 @@
       </ul>
     </div>  
   </header>
+
+
   <main>
+  <div class="wrapper">
     <section class="form">
-      <div id="messageBoard">
+
         <form id="messageForm">
           <div>
             <label for="userName">Användarnamn:</label>
@@ -38,36 +42,27 @@
           </div>
           <div>
             <label for="postText">Meddelande:</label>
-            <input type="text" id="postText" placeholder="Ditt meddelande här"></div>
-          <button type="submit" id="send-button">Skicka</button>
-          <div id="messages"></div>
+            <!-- <input type="text" id="postText" placeholder="Ditt meddelande här"> -->
+            <textarea id="postText" name="Meddelande" placeholder="Ditt meddelande här" rows="5" cols="33"></textarea>
+            </div>
+          <div><button type="submit" id="send-button">Skicka</button></div>
+    
         </form>
-      </div>
     </section>
 
-    
-
-    <div class="wrapper">
 
       <section id="errorContainer" class="hide">
         <h2 id="errorMessage"></h2>
       </section> 
 
-      <!--  Gamla formuläret, idn flyttade
-        <section id="Messages">
-        <div id="messageBoard">
-          <form id="messageForm">
-            <label for="postText">Meddelande:</label>
-            <input type="text" id="postText" placeholder="Skriv något...">
-            <input type="submit" value="Skicka">
-            <div id="messages"></div>
-          </form>
-        </div> -->
 
-      
       <section id="messagesContainer">
+        <div class="messages">
+            <!-- Messages shown here-->
+          
+        </div>
 
-        <!-- HÄR bör meddelandena visas -->
+     
 
 
 

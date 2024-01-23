@@ -1,0 +1,233 @@
+/*
+  Versionshantering- slutprojekt (FE23)
+  Gritsquare 
+  Firebase API
+  Grupp 9
+
+  Messages and form interface css
+**************************************/
+
+
+.wrapper{
+  /* margin:0 auto; */
+}
+
+
+/****FORM ****/
+
+
+.form{
+  /* width:100vw; */
+  /* height:100%; */
+  background-color: #272727;
+  
+}
+
+
+#messageForm{
+  /* background-color: #272727; */
+  padding:10px 0 10px 0;
+  display:flex;
+  align-items: center;
+  justify-content:space-around;
+  flex-direction: column;
+  gap:8px;
+  /* width:100vw; */
+}
+
+#messageForm{
+  background-color: #272727;
+  display:grid;
+}
+
+#messageForm div{
+  margin:0 20px 0 20px;
+}
+#messageForm div:nth-child(3){
+  justify-self: end;
+}
+
+.form input, .form textarea  {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  padding: 5px;
+  font-size: 0.9rem;
+  color: #1b2d2d;
+  justify-self: center;
+
+}
+
+.form button {
+  background-image: linear-gradient(#f7f8fa, #e7e9ec);
+  border-color: #7a7e84 #797c82 #5a5959#5a5959;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #414e4e;
+  font-size: 0.9rem;
+  padding: 5px 15px;
+  text-align: center;
+  justify-self: end;
+}
+
+.form button:hover {
+  border-bottom-style: solid;
+  border-bottom-color: #a2a6ac;
+}
+
+
+
+
+/*********  Messages *****/
+#messagesContainer{
+  /* background-color: #272727;
+  opacity: 0.95; */
+  margin-top:10px;
+  display:grid;
+}
+.message{
+  height:auto;
+  /* max-width:300px; */
+  font-size: 0.9em;
+  /* margin:10px 0 10px 0; */
+  color:#33353d;
+  background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
+}
+.message h3{
+  font-size: 1.2em;
+  margin:0;
+}
+
+.messageHeader{
+  background-color: #00BAF0;
+  background-color: #5ec4a5;
+  padding:5px;
+  display:flex;
+  justify-content: space-between;
+}
+.messageBody{
+  padding:10px;
+}
+
+
+
+
+
+/* .message1{
+  width:200px;
+  margin:30px;
+}
+.message2{
+  position:absolute;
+  left:40%;
+  top:30%;
+}
+.message3{
+  position:absolute;
+  left:10%;
+  top:50%;
+} */
+
+
+
+
+
+
+
+
+/********************* MEDIA QUERIES ****************/
+
+
+/* Desktop Styles */
+
+@media only screen and (min-width: 701px) {
+
+
+
+  .wrapper{
+    width:100%;
+    display:grid;
+    grid-template-columns: 300px 3fr;
+    grid-template-rows: 1fr;
+    column-gap: 15px;
+    height:100%;
+    /* grid-auto-columns: ; */
+
+
+    /* display:flex;
+    justify-content: space-between; */
+  }
+
+
+  #messagesContainer {
+    column-width: 200px;
+    max-width: 1200px;
+
+    margin: 0 auto;
+  }
+
+
+  .messages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 8em;
+    grid-auto-rows: auto;
+    grid-gap: .7em;
+    align-items: center;
+    /* background: #eee; */
+    /* padding: .5em; */
+    box-decoration-break: clone;
+    border-radius: 2px;
+    margin-bottom:15px;
+    /* border: 2px solid red; */
+  }
+
+  /* #messagesContainer > article{
+    /* max-width: 300px; */
+    /* max-width:45%; */
+  /* }  */
+
+  /* #messagesContainer {
+    width:90%;
+  } */
+
+  
+  #messageForm{
+    padding:10px 0 10px 0;
+    /* display:flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
+    gap:5px; */
+  }
+  
+  #messageForm{
+    background-color: #272727;
+    display:grid;
+  }
+  .form{
+    background-color: #272727;
+
+  }
+  
+  #messageForm div{
+    margin:0 20px 0 20px;
+  }
+
+
+  /* #messageForm{
+    display:flex;
+    justify-content: center;
+    gap:10px;
+  } */
+  
+
+  
+
+  /* .copyright {
+    font-size: 0.7em;
+  } */
+}
+
+
+

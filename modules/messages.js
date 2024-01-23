@@ -20,7 +20,8 @@ export function displayMessage(messages) {
   console.log('messageObj');
   console.log(messageObj);
   
-  const messagesSection = document.querySelector('#messagesContainer');
+  // const messagesSection = document.querySelector('#messagesContainer');
+  const messagesSection = document.querySelector('.messages');
 
   /*******André - jag tänkte först att vi inte skulle ha sidor utan sections, därför jag la in denna funktionen, vet fortfarnde inte om det är bättre att ha separata sidor eller inte, vad tycker du? ****/
   
