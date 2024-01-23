@@ -86,14 +86,31 @@
 
 /*********  Messages *****/
 #messagesContainer{
-  /* background-color: #272727;
-  opacity: 0.95; */
+  /* background-color: #272727; */
+  /* opacity: 0.95;  */
   margin-top:10px;
   display:grid;
 }
+
+.messages {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-auto-rows: 8em; */
+  grid-auto-rows: auto;
+  grid-gap: .7em;
+  align-items: center;
+  /* display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:10px; 
+  box-decoration-break: clone; */
+  padding: .5em;
+  margin-bottom:15px;
+  /* border: 2px solid red; */
+}
+
 .message{
   height:auto;
-  /* max-width:300px; */
   font-size: 0.9em;
   /* margin:10px 0 10px 0; */
   color:#33353d;
@@ -165,13 +182,9 @@
   }
 
 
-
-
-  
   #messageForm{
     background-color: #272727;
     display:grid;
-
     padding:10px 0 10px 0;
     /* display:flex;
     align-items: center;
@@ -185,12 +198,15 @@
     /* height:100%; */
     /* height:100vw; */
   }
+  #messageForm div{
+    margin:0 20px 0 20px;
+  }
 
 
-  /* #messagesContainer > article{
-  /* max-width: 300px; */
-  /* max-width:45%; */
-  /* }  */
+  .messages > article{
+    max-width: 700px;
+    /* max-width:60%; */
+  } 
 
   /* #messagesContainer {
     width:90%;
@@ -206,32 +222,11 @@
   #messagesContainer {
     column-width: 200px;
     max-width: 1200px;
-
     margin: 0 auto;
   }
 
 
-  .messages {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 8em;
-    grid-auto-rows: auto;
-    grid-gap: .7em;
-    align-items: center;
-    /* background: #eee; */
-    /* padding: .5em; */
-    /* box-decoration-break: clone; */
-    margin-bottom:15px;
-    /* border: 2px solid red; */
-  }
 
-
-  
-
-  
-  #messageForm div{
-    margin:0 20px 0 20px;
-  }
 
 
   /* #messageForm{
@@ -241,7 +236,6 @@
   } */
   
 
-  
 
   /* .copyright {
     font-size: 0.7em;
