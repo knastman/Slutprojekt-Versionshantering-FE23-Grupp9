@@ -61,10 +61,28 @@ export function displayMessage(messages) {
     const formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
     
-    // messageContainer.setAttribute("id", message.id);
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Delete';
+    deleteButton.classList.add('deleteButton');
+    deleteButton.addEventListener('click', () => DeleteMessage(messageid));
+
+    messageHeaderDiv2.appendChild(deleteButton);
   }
 }
 
+//Om man vill ta bort inlägg
+export async function DeleteMessage(messageid) {
+  if (confirm('Are you sure?')) {
+    try {
+
+      const messageRef = ref(db, `posts/${messageid}`);
+
+      await set(messageRef, null);
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  }
+}
 
 onValue(ref(db, 'posts'), (snapshot) => {
   const posts = snapshot.val();
