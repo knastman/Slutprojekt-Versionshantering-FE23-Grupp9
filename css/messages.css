@@ -25,7 +25,7 @@
 
 
 #messageForm{
-  /* background-color: #272727; */
+  background-color: #272727;
   padding:10px 0 10px 0;
   display:flex;
   align-items: center;
@@ -115,6 +115,9 @@
   /* margin:10px 0 10px 0; */
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+ 
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .message h3{
   font-size: 1.2em;
