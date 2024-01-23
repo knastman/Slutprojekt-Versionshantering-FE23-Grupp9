@@ -2,7 +2,7 @@
 //import {getMessages } from './modules/api.js';
 
  
-import { displayMessage, handlePostForm, DeleteMessage } from './modules/messages.js';
+import { displayMessage, handlePostForm, deleteMessage } from './modules/messages.js';
 // import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 // import { db } from './modules/api.js';
 

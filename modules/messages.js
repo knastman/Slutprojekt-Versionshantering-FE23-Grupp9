@@ -55,7 +55,7 @@ export function displayMessage(messages) {
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Radera';
     deleteButton.classList.add('deleteButton');
-    deleteButton.addEventListener('click', () => DeleteMessage(messageid));
+    deleteButton.addEventListener('click', () => deleteMessage(messageid));
 
     messageBody.appendChild(deleteButton);
   }
@@ -65,17 +65,23 @@ export function displayMessage(messages) {
 
 //Hämtar meddelanden från databasen
 
-//mitt förslag på error. Blir det som tänkt?
-
+// Hämtar meddelanden från databasen
 onValue(ref(db, 'posts'), (snapshot) => {
-try {
-   const posts = snapshot.val();
-   displayMessage({ Messages: posts });
-} catch (displayError) {
-  console.log(error);
-  errorContainer.innerText = error;
-}
+  const posts = snapshot.val();
+  displayMessage({ Messages: posts });
 });
+
+//mitt förslag på error. Blir det som tänkt?Nej dessvärre inte, har provat
+
+// onValue(ref(db, 'posts'), (snapshot) => {
+// try {
+//    const posts = snapshot.val();
+//    displayMessage({ Messages: posts });
+// } catch (displayError) {
+//   console.log(error);
+//   errorContainer.innerText = error;
+// }
+// });
 
 
 // Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
@@ -129,7 +135,7 @@ export function handlePostForm() {
   Raderar meddelanden
 *****************************************/
 
-export async function DeleteMessage(messageid) {
+export async function deleteMessage(messageid) {
   if (confirm('Are you sure?')) {
     try {
 
