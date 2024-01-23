@@ -1,5 +1,5 @@
 import { db } from './api.js';
-import { push, serverTimestamp, set, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 const allSections = document.querySelectorAll('section');
 const errorContainer = document.querySelector('#errorContainer');
@@ -63,14 +63,23 @@ export function displayMessage(messages) {
 
 
 
-// Hämtar meddelanden från databasen
-// onValue(ref(db, 'posts'), (snapshot) => {
-//   const posts = snapshot.val();
-//   displayMessage({ Messages: posts });
-// });
+//Hämtar meddelanden från databasen
+
+//mitt förslag på error. Blir det som tänkt?
+
+onValue(ref(db, 'posts'), (snapshot) => {
+try {
+   const posts = snapshot.val();
+   displayMessage({ Messages: posts });
+} catch (displayError) {
+  console.log(error);
+  errorContainer.innerText = error;
+}
+});
 
 
 // Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
+/*
 get(ref(db, 'posts'))
   .then((snapshot) => {
     if (snapshot.exists) {
