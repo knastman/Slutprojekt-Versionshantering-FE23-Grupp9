@@ -86,9 +86,6 @@ header{
   height: 50px;
   padding: 1em;
 }
-/* .top-nav div:first-child{
-  font-weight: 600;
-} */
 
 .menu {
   display: flex;
@@ -179,9 +176,7 @@ header{
 .main-footer {
   background-color:aquamarine;
   /* background: linear-gradient(to left, #f46b45, #f4d755); */
-  background: linear-gradient(to left, #6be89b, #0076a5);
-
-  
+  background: linear-gradient(to left, #6be89b, #0076a5);  
   color: #fff;
   display: flex;
   align-items: center;
@@ -269,7 +264,6 @@ header{
 
 @media only screen and (min-width: 701px) {
 
-
   .pages{
     margin:40px auto;
     width:50vw;
@@ -281,11 +275,6 @@ header{
     height: 50px;
     padding: 1.4em;
   }
-
-
-
-
-  
 
   /* .copyright {
     font-size: 0.7em;
