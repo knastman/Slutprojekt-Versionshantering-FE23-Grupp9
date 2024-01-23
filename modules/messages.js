@@ -70,25 +70,6 @@ export function displayMessage(messages) {
   }
 }
 
-//Om man vill ta bort inlägg
-export async function DeleteMessage(messageid) {
-  if (confirm('Are you sure?')) {
-    try {
-
-      const messageRef = ref(db, `posts/${messageid}`);
-
-      await set(messageRef, null);
-    } catch (error) {
-      console.error('Error deleting message:', error);
-    }
-  }
-}
-
-onValue(ref(db, 'posts'), (snapshot) => {
-  const posts = snapshot.val();
-  displayMessage({ Messages: posts });
-});
-
 
 /****************************************
 Formulär - lägger in meddelanden till databasen
@@ -122,6 +103,30 @@ export function handlePostForm() {
   });
 }
 
+
+
+
+/****************************************
+  Raderar meddelanden
+*****************************************/
+
+export async function DeleteMessage(messageid) {
+  if (confirm('Are you sure?')) {
+    try {
+
+      const messageRef = ref(db, `posts/${messageid}`);
+
+      await set(messageRef, null);
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  }
+}
+
+onValue(ref(db, 'posts'), (snapshot) => {
+  const posts = snapshot.val();
+  displayMessage({ Messages: posts });
+});
 
 
 
