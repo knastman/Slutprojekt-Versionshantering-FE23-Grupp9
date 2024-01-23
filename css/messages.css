@@ -76,6 +76,12 @@
 }
 
 
+.intro-text{
+  padding:5px 15px 10px 15px;
+  border-top:1px solid #656464;
+}
+
+
 
 
 /*********  Messages *****/
@@ -150,12 +156,50 @@
     grid-template-columns: 300px 3fr;
     grid-template-rows: 1fr;
     column-gap: 15px;
-    height:100%;
+    /* height:100%;
+    height:100vw; */
     /* grid-auto-columns: ; */
-
-
     /* display:flex;
     justify-content: space-between; */
+
+  }
+
+
+
+
+  
+  #messageForm{
+    background-color: #272727;
+    display:grid;
+
+    padding:10px 0 10px 0;
+    /* display:flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: column;
+    gap:5px; */
+    
+  }
+  .form{
+    background-color: #272727;
+    /* height:100%; */
+    /* height:100vw; */
+  }
+
+
+  /* #messagesContainer > article{
+  /* max-width: 300px; */
+  /* max-width:45%; */
+  /* }  */
+
+  /* #messagesContainer {
+    width:90%;
+  } */
+
+  .intro-text{
+    padding:20px 20px 40px 20px;
+    /* height:100%;
+    height:20vw; */
   }
 
 
@@ -176,39 +220,14 @@
     align-items: center;
     /* background: #eee; */
     /* padding: .5em; */
-    box-decoration-break: clone;
-    border-radius: 2px;
+    /* box-decoration-break: clone; */
     margin-bottom:15px;
     /* border: 2px solid red; */
   }
 
-  /* #messagesContainer > article{
-    /* max-width: 300px; */
-    /* max-width:45%; */
-  /* }  */
-
-  /* #messagesContainer {
-    width:90%;
-  } */
 
   
-  #messageForm{
-    padding:10px 0 10px 0;
-    /* display:flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-direction: column;
-    gap:5px; */
-  }
-  
-  #messageForm{
-    background-color: #272727;
-    display:grid;
-  }
-  .form{
-    background-color: #272727;
 
-  }
   
   #messageForm div{
     margin:0 20px 0 20px;
