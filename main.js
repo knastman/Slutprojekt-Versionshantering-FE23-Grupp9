@@ -3,19 +3,29 @@
 
  
 import { displayMessage, handlePostForm, DeleteMessage } from './modules/messages.js';
+// import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+// import { db } from './modules/api.js';
 
+
+// Hanterar formuläret
 handlePostForm();
+
+// Hämtar meddelanden från databasen 
+// onValue(ref(db, 'posts'), (snapshot) => {
+//   const posts = snapshot.val();
+//   displayMessage({ Messages: posts });
+// });
+
+
+
 // getMessages();
 
 
-//vad är detta?
-//window.addEventListener("load", onPageLoad);
 
-//function onPageLoad(){
  // getMessages()
 //  .then(displayMessage)
   // .catch(displayError);
-//}
+
 
 
 

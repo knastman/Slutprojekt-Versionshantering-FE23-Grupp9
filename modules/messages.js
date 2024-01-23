@@ -11,19 +11,8 @@ const allSections = document.querySelectorAll('section');
 
 export function displayMessage(messages) {
   
-  // console.log(messages);
-  // console.log(messages.Messages);
-  // console.log(messages.Messages.message1);
-  
   const messageObj = messages.Messages;
-  
-  console.log('messageObj');
-  console.log(messageObj);
-  
-  // const messagesSection = document.querySelector('#messagesContainer');
   const messagesSection = document.querySelector('.messages');
-
-  /*******André - jag tänkte först att vi inte skulle ha sidor utan sections, därför jag la in denna funktionen, vet fortfarnde inte om det är bättre att ha separata sidor eller inte, vad tycker du? ****/
   
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
@@ -61,18 +50,25 @@ export function displayMessage(messages) {
     const formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
     
+    //Delete messeges
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Delete';
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => DeleteMessage(messageid));
 
-    messageHeaderDiv2.appendChild(deleteButton);
+    messageBody.appendChild(deleteButton);
   }
 }
 
+// Hämtar meddelanden från databasen
+onValue(ref(db, 'posts'), (snapshot) => {
+  const posts = snapshot.val();
+  displayMessage({ Messages: posts });
+});
+
 
 /****************************************
-Formulär - lägger in meddelanden till databasen
+Formulär - meddelanden till databasen
 *****************************************/
 
 export function handlePostForm() {
@@ -98,8 +94,17 @@ export function handlePostForm() {
 //så man slipper fylla i användarnamn för varje nytt meddelande
 
     postTextInput.value = '';
-
     postTextInput.focus();
+  });
+}
+
+
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    username: name,
+    email: email,
+    profile_picture : imageUrl
   });
 }
 
@@ -122,13 +127,6 @@ export async function DeleteMessage(messageid) {
     }
   }
 }
-
-onValue(ref(db, 'posts'), (snapshot) => {
-  const posts = snapshot.val();
-  displayMessage({ Messages: posts });
-});
-
-
 
 
 /************** NEDAN BEÖVS KANSKE INTE men man borde ävl ha ngn slags errorhantering? **************/

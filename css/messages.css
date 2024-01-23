@@ -55,6 +55,7 @@
   font-size: 0.9rem;
   color: #1b2d2d;
   justify-self: center;
+  font-family: inherit;
 
 }
 
@@ -111,7 +112,7 @@
 
 .message{
   height:auto;
-  font-size: 0.9em;
+  font-size: 1em;
   /* margin:10px 0 10px 0; */
   color:#33353d;
   background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%);
@@ -120,7 +121,7 @@
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .message h3{
-  font-size: 1.2em;
+  font-size: 1.15em;
   margin:0;
 }
 
@@ -134,7 +135,16 @@
 .messageBody{
   padding:10px;
 }
-
+.deleteButton{
+  background-image: linear-gradient(#f7f8fa, #e7e9ec);
+  border-color: #7a7e84 #797c82 #5a5959#5a5959;
+  border-width: 1px;
+  border-radius: 3px;
+  color: #414e4e;
+  font-size: 0.9rem;
+  padding: 3px;
+  text-align: center;
+}
 
 
 

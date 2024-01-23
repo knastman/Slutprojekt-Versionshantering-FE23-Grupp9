@@ -7,12 +7,11 @@ import { firebaseConfig } from './apiconfig.js';
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-
-//Gritsquare databas
-const BASE_URL = `https://versionshantering---gritsquare-default-rtdb.europe-west1.firebasedatabase.app/.json`;
-
-
 export { app, db };
+
+
+// //Gritsquare databas
+// const BASE_URL = `https://versionshantering---gritsquare-default-rtdb.europe-west1.firebasedatabase.app/.json`;
 
 
 //async function getMessages() {
