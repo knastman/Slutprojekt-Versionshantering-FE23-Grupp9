@@ -1,4 +1,5 @@
-//Senast uppdaterad displayMessage
+//klockan är nu 01:44
+//displayMessage från gamla interfacen inkopierad av André. Nyare med kommentarer finns längre ner på sidan
 
 export function displayMessage(messages) {
   
