@@ -2,6 +2,7 @@ import { db } from './api.js';
 import { push, serverTimestamp, set, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 const allSections = document.querySelectorAll('section');
+const errorContainer = document.querySelector('#errorContainer');
 
 /****************************************
   Hämtar och visa meddelande
@@ -60,6 +61,8 @@ export function displayMessage(messages) {
   }
 }
 
+
+
 // Hämtar meddelanden från databasen
 // onValue(ref(db, 'posts'), (snapshot) => {
 //   const posts = snapshot.val();
@@ -67,18 +70,17 @@ export function displayMessage(messages) {
 // });
 
 
+// Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
 get(ref(db, 'posts'))
   .then((snapshot) => {
-    //'snapshot.exists' checks data is available or its null
-    // And return boolean value
     if (snapshot.exists) {
       const posts = snapshot.val();
       displayMessage({ Messages: posts });
     }
   })
+  .catch(displayError);
   //.catch((error) => console.log(error));
-  .catch((error) => messagesSection.innerText = error);
-  // messagesSection.innerText = 'Det går inte att läsa databasen';
+  // .catch((error) => errorContainer.innerText = error);
 
 
 
@@ -126,6 +128,7 @@ export async function DeleteMessage(messageid) {
 
       await set(messageRef, null);
     } catch (error) {
+    // } catch (displayError) {
       console.error('Error deleting message:', error);
     }
   }
@@ -138,9 +141,9 @@ export async function DeleteMessage(messageid) {
   Hide sections  
 **********************************/
 
-// function hideElements(array){
-//   array.forEach((element) => element.classList.add("hide"));
-// }
+function hideElements(array){
+  array.forEach((element) => element.classList.add("hide"));
+}
 
 
 
@@ -148,21 +151,23 @@ export async function DeleteMessage(messageid) {
    Error messages
 *********************************************/
 
-// function displayError(error) {
-//   let message;
-//   const errorContainer = document.querySelector('#errorContainer');
-//   hideElements(allSections);
-//   errorContainer.classList.remove('hide');
+function displayError(error) {
+  let message;
+  const errorContainer = document.querySelector('#errorContainer');
+  hideElements(allSections);
+  errorContainer.classList.remove('hide');
 
-//   if (error === 404) { 
-//     message = 'No results found. Try again.';
-//   }
-//   else{ 
-//     message = 'Something went wrong, try again later.' 
-//   }
+  if (error === 404) { 
+    message = 'No results found. Try again.';
+  }
+  else{ 
+    message = 'Something went wrong, try again later.' 
+  }
   
-//   const errorMessageHeader = document.querySelector('#errorMessage');
-//   errorMessageHeader.innerText = message;
+  const errorMessageHeader = document.querySelector('#errorMessage');
+  errorMessageHeader.innerText = message;
 
-// }
+}
+
+
 
