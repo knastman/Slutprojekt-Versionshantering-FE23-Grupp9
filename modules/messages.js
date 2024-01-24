@@ -96,36 +96,6 @@ export function handlePostForm() {
 }
 
 
-// Med try/catch, men oklart om det är rätt 
-// export function handlePostForm() {
-//   const postForm = document.getElementById('messageForm');
-//   const postTextInput = document.getElementById('postText');
-
-//   postForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const postText = postTextInput.value;
-//     const userName = document.getElementById('userName').value;
-//     const newPostRef = push(ref(db, 'posts'));
-//     const postData = {
-//       name: userName,
-//       text: postText,
-//       timestamp: serverTimestamp()
-//     };
-//     const messageSound = new Audio("./sound/message_sent.mp3"); //lunas
-
-//     try {
-//       messageSound.play(); //Lunas
-//       await set(newPostRef, postData);
-//       postTextInput.value = '';
-//       postTextInput.focus();
-
-//     } catch (error) {
-//       console.log(error);
-//       alert('Postning misslyckades');
-//     }
-//   });
-// }
-
 /****************************************
   Raderar meddelanden
 *****************************************/
@@ -143,8 +113,6 @@ export async function deleteMessage(messageid) {
     }
   }
 }
-
-
 
 
 /********************************************
