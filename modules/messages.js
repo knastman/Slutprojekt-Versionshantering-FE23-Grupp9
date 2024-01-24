@@ -77,6 +77,24 @@ export function displayMessage(messages) {
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
     messageBody.appendChild(deleteButton);
+
+        //Gillningar med inkommande petrafix
+        const likeButton = document.createElement('button');
+        const showLikes = document.createElement('p');
+        
+        likeButton.innerText = 'Gilla';
+        let likesTotal = 0;
+    
+        function clickLike () {
+        likesTotal++
+        showLikes.innerText = likesTotal;
+        }
+    
+        likeButton.addEventListener('click', clickLike);
+    
+        messageBody.appendChild(likeButton);
+        messageBody.appendChild(showLikes);
+
   }
 
 
