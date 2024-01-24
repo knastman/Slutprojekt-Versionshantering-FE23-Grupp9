@@ -64,7 +64,10 @@ export function displayMessage(messages) {
     const postTimestamp = message.timestamp;
     const postDate = new Date(postTimestamp);
 
-    formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+    const hours = postDate.getHours().toString().padStart(2, '0');
+    const minutes = postDate.getMinutes().toString().padStart(2, '0');
+
+    const formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
   const timeIncludesTime = formattedTime.includes(currentDate);
   if (timeIncludesTime) {
