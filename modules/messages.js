@@ -77,14 +77,13 @@ export function displayMessage(messages) {
 //version med error-hantering
 onValue(ref(db, 'posts'), (snapshot) => {
   try {
-    
-    //påhittat fel för testa
+    // påhittat fel för testa
     // throw new Error('Detta är ett testfel.');
 
     const posts = snapshot.val();
     displayMessage({ Messages: posts });
   } catch (error) {
-    displayError();
+    displayError(); //Vet inte om det ska stå error i parantesen här också
   }
 });
 
@@ -190,10 +189,10 @@ function displayError(error) {
   errorContainer.classList.remove('hide');
 
   if (error === 404) { 
-    message = 'No results found. Try again.';
+    message = 'Inga meddelanden hittades.';
   }
   else{ 
-    message = 'Something went wrong, try again later.' 
+    message = 'Något gick fel, försök igen.' 
   }
   
   const errorMessage = document.querySelector('#errorMessage');
