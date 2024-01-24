@@ -126,6 +126,12 @@
 }
 .messageBody{
   padding:10px;
+  float: left;
+}
+.messageOfTheDay{
+ float: right;
+ padding: 7% 5px 5px 0;
+ color: black;
 }
 .deleteButton{
   background-image: linear-gradient(#f7f8fa, #e7e9ec);
