@@ -1,37 +1,40 @@
-import { db } from './api.js';
-import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+import { db } from "./api.js";
+import {
+  push,
+  serverTimestamp,
+  set,
+  ref,
+  onValue,
+} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
 
-const allSections = document.querySelectorAll('section');
-const errorContainer = document.querySelector('#errorContainer');
+const allSections = document.querySelectorAll("section");
+const errorContainer = document.querySelector("#errorContainer");
 
 /****************************************
   Hämtar och visa meddelande
 *****************************************/
 
-
-
 export function displayMessage(messages) {
-  
   const messageObj = messages.Messages;
-  const messagesSection = document.querySelector('.messages');
-  
+  const messagesSection = document.querySelector(".messages");
+
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
 
-  messagesSection.innerHTML = '';
+  messagesSection.innerHTML = "";
 
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
-    const messageContainer = document.createElement('article');
+    const messageContainer = document.createElement("article");
     messageContainer.classList.add("message");
 
-    const messageHeader = document.createElement('div');
-    const messageHeaderDiv1 = document.createElement('div');
-    const messageHeaderDiv2 = document.createElement('div');
-    const messageBody = document.createElement('div');
+    const messageHeader = document.createElement("div");
+    const messageHeaderDiv1 = document.createElement("div");
+    const messageHeaderDiv2 = document.createElement("div");
+    const messageBody = document.createElement("div");
 
-    const messageHeaderText = document.createElement('h3');
-    const messageText = document.createElement('p');
+    const messageHeaderText = document.createElement("h3");
+    const messageText = document.createElement("p");
 
     messagesSection.append(messageContainer);
     messageContainer.append(messageHeader, messageBody);
@@ -45,23 +48,23 @@ export function displayMessage(messages) {
 
     messageHeaderText.innerText = message.name;
     messageText.innerText = message.text;
-    
+
     const postTimestamp = message.timestamp;
     const postDate = new Date(postTimestamp);
-    const formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+    const formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${
+      postDate.getMonth() + 1
+    }-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
-    
+
     //Delete messeges
-    const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Radera';
-    deleteButton.classList.add('deleteButton');
-    deleteButton.addEventListener('click', () => deleteMessage(messageid));
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Radera";
+    deleteButton.classList.add("deleteButton");
+    deleteButton.addEventListener("click", () => deleteMessage(messageid));
 
     messageBody.appendChild(deleteButton);
   }
 }
-
-
 
 //Hämtar meddelanden från databasen
 
@@ -73,11 +76,9 @@ export function displayMessage(messages) {
 //  displayMessage({ Messages: posts });
 //});
 
-
 //version med error-hantering
-onValue(ref(db, 'posts'), (snapshot) => {
+onValue(ref(db, "posts"), (snapshot) => {
   try {
-    
     //påhittat fel för testa
     // throw new Error('Detta är ett testfel.');
 
@@ -100,7 +101,6 @@ onValue(ref(db, 'posts'), (snapshot) => {
 // }
 // });
 
-
 // Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
 /*
 get(ref(db, 'posts'))
@@ -121,51 +121,51 @@ Formulär - meddelanden till databasen
 *****************************************/
 
 export function handlePostForm() {
-  const postForm = document.getElementById('messageForm');
-  const postTextInput = document.getElementById('postText');
+  const postForm = document.getElementById("messageForm");
+  const postTextInput = document.getElementById("postText");
 
-  postForm.addEventListener('submit', async (e) => {
+  postForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const postText = postTextInput.value;
-    const userName = document.getElementById('userName').value;
+    const messageSound = new Audio("./sound/message_sent.mp3");
+    messageSound.play();
 
-    const newPostRef = push(ref(db, 'posts'));
+    const postText = postTextInput.value;
+    const userName = document.getElementById("userName").value;
+
+    const newPostRef = push(ref(db, "posts"));
 
     const postData = {
       name: userName,
       text: postText,
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
     };
 
     await set(newPostRef, postData);
 
-//så man slipper fylla i användarnamn för varje nytt meddelande
+    //så man slipper fylla i användarnamn för varje nytt meddelande
 
-    postTextInput.value = '';
+    postTextInput.value = "";
     postTextInput.focus();
   });
 }
-
 
 /****************************************
   Raderar meddelanden
 *****************************************/
 
 export async function deleteMessage(messageid) {
-  if (confirm('Are you sure?')) {
+  if (confirm("Are you sure?")) {
     try {
-
       const messageRef = ref(db, `posts/${messageid}`);
 
       await set(messageRef, null);
     } catch (error) {
-    // } catch (displayError) {
-      console.error('Error deleting message:', error);
+      // } catch (displayError) {
+      console.error("Error deleting message:", error);
     }
   }
 }
-
 
 /************** NEDAN BEÖVS KANSKE INTE men man borde ävl ha ngn slags errorhantering? **************/
 
@@ -173,11 +173,9 @@ export async function deleteMessage(messageid) {
   Hide sections  
 **********************************/
 
-function hideElements(array){
+function hideElements(array) {
   array.forEach((element) => element.classList.add("hide"));
 }
-
-
 
 /********************************************
    Error messages
@@ -185,21 +183,16 @@ function hideElements(array){
 
 function displayError(error) {
   let message;
-  const errorContainer = document.querySelector('#errorContainer');
+  const errorContainer = document.querySelector("#errorContainer");
   hideElements(allSections);
-  errorContainer.classList.remove('hide');
+  errorContainer.classList.remove("hide");
 
-  if (error === 404) { 
-    message = 'No results found. Try again.';
+  if (error === 404) {
+    message = "No results found. Try again.";
+  } else {
+    message = "Something went wrong, try again later.";
   }
-  else{ 
-    message = 'Something went wrong, try again later.' 
-  }
-  
-  const errorMessage = document.querySelector('#errorMessage');
+
+  const errorMessage = document.querySelector("#errorMessage");
   errorMessage.innerText = message;
-
 }
-
-
-
