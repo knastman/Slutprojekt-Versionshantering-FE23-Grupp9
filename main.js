@@ -4,6 +4,8 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase
  
 import { displayMessage, handlePostForm, displayError } from './modules/messages.js';
 
+// Elvira Ericsson, feel free att ta bort denna kommentar, ville vara tydlig bara.
+import { scroll, scrollToTopFunction } from './modules/scrollToTop.js';
 
 // Hanterar formuläret
 handlePostForm();
@@ -19,7 +21,10 @@ onValue(messageDatabaseRef, (snapshot) => {
   }
 });
 
-
+// Scroll to top when user presses button.
+// Elvira Ericsson 
+window.addEventListener('scroll', scroll);
+document.getElementById('to-the-top-button').addEventListener('click', scrollToTopFunction);
 
 
 
