@@ -8,15 +8,13 @@ const errorContainer = document.querySelector('#errorContainer');
   Hämtar och visa meddelande
 *****************************************/
 
-
-
 export function displayMessage(messages) {
   
   const messageObj = messages.Messages;
   const messagesSection = document.querySelector('.messages');
   
   // hideElements(allSections);
-  // movieListSection.classList.remove("hide");
+  // x.classList.remove("hide");
 
   messagesSection.innerHTML = '';
 
@@ -74,46 +72,6 @@ export function displayMessage(messages) {
 //});
 
 
-//version med error-hantering
-onValue(ref(db, 'posts'), (snapshot) => {
-  try {
-    // påhittat fel för testa
-    // throw new Error('Detta är ett testfel.');
-
-    const posts = snapshot.val();
-    displayMessage({ Messages: posts });
-  } catch (error) {
-    displayError(); //Vet inte om det ska stå error i parantesen här också
-  }
-});
-
-//mitt förslag på error. Blir det som tänkt?Nej dessvärre inte, har provat
-
-// onValue(ref(db, 'posts'), (snapshot) => {
-// try {
-//    const posts = snapshot.val();
-//    displayMessage({ Messages: posts });
-// } catch (displayError) {
-//   console.log(error);
-//   errorContainer.innerText = error;
-// }
-// });
-
-
-// Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
-/*
-get(ref(db, 'posts'))
-  .then((snapshot) => {
-    if (snapshot.exists) {
-      const posts = snapshot.val();
-      displayMessage({ Messages: posts });
-    }
-  })
-  .catch(displayError);
-  //.catch((error) => console.log(error));
-  // .catch((error) => errorContainer.innerText = error);
-
-
 
 /****************************************
 Formulär - meddelanden till databasen
@@ -159,9 +117,7 @@ export function handlePostForm() {
 export async function deleteMessage(messageid) {
   if (confirm('Are you sure?')) {
     try {
-
       const messageRef = ref(db, `posts/${messageid}`);
-
       await set(messageRef, null);
     } catch (error) {
     // } catch (displayError) {
