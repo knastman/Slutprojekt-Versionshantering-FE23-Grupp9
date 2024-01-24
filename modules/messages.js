@@ -1,14 +1,13 @@
 import { db } from './api.js';
-import { push, serverTimestamp, set, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+import { push, serverTimestamp, set, ref} from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 
 const allSections = document.querySelectorAll('section');
 const errorContainer = document.querySelector('#errorContainer');
 
+
 /****************************************
-  Hämtar och visa meddelande
+ Bygger gränssnitt för meddelandevisning
 *****************************************/
-
-
 
 export function displayMessage(messages) {
   
@@ -62,59 +61,6 @@ export function displayMessage(messages) {
 }
 
 
-
-//Hämtar meddelanden från databasen
-
-//nytt försök
-
-//version utan error-hantering
-// onValue(ref(db, 'posts'), (snapshot) => {
-//  const posts = snapshot.val();
-//  displayMessage({ Messages: posts });
-//});
-
-
-//version med error-hantering
-onValue(ref(db, 'posts'), (snapshot) => {
-  try {
-    // påhittat fel för testa
-    // throw new Error('Detta är ett testfel.');
-
-    const posts = snapshot.val();
-    displayMessage({ Messages: posts });
-  } catch (error) {
-    displayError(); //Vet inte om det ska stå error i parantesen här också
-  }
-});
-
-//mitt förslag på error. Blir det som tänkt?Nej dessvärre inte, har provat
-
-// onValue(ref(db, 'posts'), (snapshot) => {
-// try {
-//    const posts = snapshot.val();
-//    displayMessage({ Messages: posts });
-// } catch (displayError) {
-//   console.log(error);
-//   errorContainer.innerText = error;
-// }
-// });
-
-
-// Hämtar poster och ger error om det inte funkar. Men delete funkar inte lika bra med denna
-/*
-get(ref(db, 'posts'))
-  .then((snapshot) => {
-    if (snapshot.exists) {
-      const posts = snapshot.val();
-      displayMessage({ Messages: posts });
-    }
-  })
-  .catch(displayError);
-  //.catch((error) => console.log(error));
-  // .catch((error) => errorContainer.innerText = error);
-
-
-
 /****************************************
 Formulär - meddelanden till databasen
 *****************************************/
@@ -125,39 +71,60 @@ export function handlePostForm() {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const userName = document.getElementById('userName').value;
+    const postText = postTextInput.value;
 
+    const newPostRef = push(ref(db, 'posts'));
+    const postData = {
+      name: userName,
+      text: postText,
+      timestamp: serverTimestamp()
+    };
 
-    try {
-
-    // throw new Error('testfel');
-
-    /* Luna Lägger här */ 
+    /* Lunas kod */ 
     const messageSound = new Audio("./sound/message_sent.mp3");
     messageSound.play();
-    /* här slutar */
+    /* Lunas kod slut */
 
-      const postText = postTextInput.value;
-      const userName = document.getElementById('userName').value;
+    await set(newPostRef, postData);
 
-      const newPostRef = push(ref(db, 'posts'));
+    //Rensar meddalndefältet
+    postTextInput.value = '';
+    postTextInput.focus();
 
-      const postData = {
-        name: userName,
-        text: postText,
-        timestamp: serverTimestamp()
-      };
-
-      await set(newPostRef, postData);
-
-
-      postTextInput.value = '';
-      postTextInput.focus();
-    } catch (error) {
-      console.log(error);
-      alert('Postning misslyckades');
-    }
   });
 }
+
+
+// Med try/catch, men oklart om det är rätt 
+// export function handlePostForm() {
+//   const postForm = document.getElementById('messageForm');
+//   const postTextInput = document.getElementById('postText');
+
+//   postForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     const postText = postTextInput.value;
+//     const userName = document.getElementById('userName').value;
+//     const newPostRef = push(ref(db, 'posts'));
+//     const postData = {
+//       name: userName,
+//       text: postText,
+//       timestamp: serverTimestamp()
+//     };
+//     const messageSound = new Audio("./sound/message_sent.mp3"); //lunas
+
+//     try {
+//       messageSound.play(); //Lunas
+//       await set(newPostRef, postData);
+//       postTextInput.value = '';
+//       postTextInput.focus();
+
+//     } catch (error) {
+//       console.log(error);
+//       alert('Postning misslyckades');
+//     }
+//   });
+// }
 
 /****************************************
   Raderar meddelanden
@@ -177,16 +144,6 @@ export async function deleteMessage(messageid) {
   }
 }
 
-
-/************** NEDAN BEÖVS KANSKE INTE men man borde ävl ha ngn slags errorhantering? **************/
-
-/*********************************
-  Hide sections  
-**********************************/
-
-function hideElements(array){
-  array.forEach((element) => element.classList.add("hide"));
-}
 
 
 
@@ -212,5 +169,15 @@ function displayError(error) {
 
 }
 
+
+//Nedan behövs troligen inte
+
+/*********************************
+  Hide sections  
+**********************************/
+
+// function hideElements(array){
+//   array.forEach((element) => element.classList.add("hide"));
+// }
 
 

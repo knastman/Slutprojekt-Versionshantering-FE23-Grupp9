@@ -7,14 +7,7 @@
   Messages and form interface css
 **************************************/
 
-
-.wrapper{
-  /* margin:0 auto; */
-}
-
-
 /****FORM ****/
-
 
 .form{
   /* width:100vw; */
@@ -83,9 +76,6 @@
   padding:5px 15px 10px 15px;
   border-top:1px solid #656464;
 }
-
-
-
 
 /*********  Messages *****/
 #messagesContainer{

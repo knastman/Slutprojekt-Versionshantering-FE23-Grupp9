@@ -30,26 +30,6 @@ onValue(messageDatabaseRef, (snapshot) => {
 
 
 
-// onValue(ref(db, 'posts'), (snapshot) => {
-//   try {
-//     // påhittat fel för testa
-//     // throw new Error('Detta är ett testfel.');
-
-//     const posts = snapshot.val();
-//     displayMessage({ Messages: posts });
-//   } catch (error) {
-//     displayError(); //Vet inte om det ska stå error i parantesen här också
-//   }
-// });
-
-
-
-
-
-
-
-
-
 
 
 
