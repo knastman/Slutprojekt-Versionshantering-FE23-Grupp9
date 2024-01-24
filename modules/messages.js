@@ -10,14 +10,30 @@ const errorContainer = document.querySelector('#errorContainer');
 *****************************************/
 
 export function displayMessage(messages) {
-  
+  //Petra kolla koden här o rensa
   const messageObj = messages.Messages;
+  const messageObj2 = messages;
+  console.log('messageObj');
+  console.log(messageObj);
+  console.log(messageObj2);
   const messagesSection = document.querySelector('.messages');
   
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
 
   messagesSection.innerHTML = '';
+  let formattedTime = '';
+
+
+// Melker grupp 5 message of the day feature
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let currentDate = `${day}-${month}-${year}`;
+
+  //Petras tillägg till melkers kod
+  let nrOfTrue = 0;
 
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
@@ -47,17 +63,44 @@ export function displayMessage(messages) {
     
     const postTimestamp = message.timestamp;
     const postDate = new Date(postTimestamp);
-    const formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+
+    formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
+
     
     //Delete messeges
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Radera';
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
-
     messageBody.appendChild(deleteButton);
+
+
+    // Melker grupp 5 message of the day feature
+    const timeIncludesTime = formattedTime.includes(currentDate);
+    if (timeIncludesTime) {
+      console.log('timeIncludesTime är true');
+      nrOfTrue++; //petras tillägg
+    }
+
+
   }
+
+  // Melker grupp 5 message of the day feature med petrafix
+  console.log(nrOfTrue);
+  // const selected = messagesSection.querySelectorAll('article'); <-- detta blir kaka på kaka pga forloopen gör redan det
+ 
+  const randomIndex = (Math.floor(Math.random()*(nrOfTrue)));
+
+  // const randomSelected = selected[randomIndex];
+  const randomSelected = nrOfTrue[randomIndex]; // Denna måste fixas
+  console.log(randomSelected); 
+
+
+
+
+
+
 }
 
 
@@ -119,7 +162,7 @@ export async function deleteMessage(messageid) {
    Error messages
 *********************************************/
 
-function displayError(error) {
+export function displayError(error) {
   let message;
   const errorContainer = document.querySelector('#errorContainer');
   hideElements(allSections);
@@ -144,8 +187,8 @@ function displayError(error) {
   Hide sections  
 **********************************/
 
-// function hideElements(array){
-//   array.forEach((element) => element.classList.add("hide"));
-// }
+function hideElements(array){
+  array.forEach((element) => element.classList.add("hide"));
+}
 
 
