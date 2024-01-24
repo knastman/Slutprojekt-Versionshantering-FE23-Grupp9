@@ -118,7 +118,6 @@ get(ref(db, 'posts'))
 /****************************************
 Formulär - meddelanden till databasen
 *****************************************/
-
 export function handlePostForm() {
   const postForm = document.getElementById('messageForm');
   const postTextInput = document.getElementById('postText');
@@ -126,31 +125,39 @@ export function handlePostForm() {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+
+
+    try {
+
+    // throw new Error('testfel');
+
     /* Luna Lägger här */ 
     const messageSound = new Audio("./sound/message_sent.mp3");
     messageSound.play();
     /* här slutar */
 
-    const postText = postTextInput.value;
-    const userName = document.getElementById('userName').value;
+      const postText = postTextInput.value;
+      const userName = document.getElementById('userName').value;
 
-    const newPostRef = push(ref(db, 'posts'));
+      const newPostRef = push(ref(db, 'posts'));
 
-    const postData = {
-      name: userName,
-      text: postText,
-      timestamp: serverTimestamp()
-    };
+      const postData = {
+        name: userName,
+        text: postText,
+        timestamp: serverTimestamp()
+      };
 
-    await set(newPostRef, postData);
+      await set(newPostRef, postData);
 
-//så man slipper fylla i användarnamn för varje nytt meddelande
 
-    postTextInput.value = '';
-    postTextInput.focus();
+      postTextInput.value = '';
+      postTextInput.focus();
+    } catch (error) {
+      console.log(error);
+      alert('Postning misslyckades');
+    }
   });
 }
-
 
 /****************************************
   Raderar meddelanden
