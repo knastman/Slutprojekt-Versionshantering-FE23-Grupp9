@@ -126,28 +126,30 @@ export function handlePostForm() {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    /* Luna Lägger här */ 
-    const messageSound = new Audio("./sound/message_sent.mp3");
-    messageSound.play();
-    /* här slutar */
+    try {
 
-    const postText = postTextInput.value;
-    const userName = document.getElementById('userName').value;
+     // throw new Error('testfel');
 
-    const newPostRef = push(ref(db, 'posts'));
+      const postText = postTextInput.value;
+      const userName = document.getElementById('userName').value;
 
-    const postData = {
-      name: userName,
-      text: postText,
-      timestamp: serverTimestamp()
-    };
+      const newPostRef = push(ref(db, 'posts'));
 
-    await set(newPostRef, postData);
+      const postData = {
+        name: userName,
+        text: postText,
+        timestamp: serverTimestamp()
+      };
 
-//så man slipper fylla i användarnamn för varje nytt meddelande
+      await set(newPostRef, postData);
 
-    postTextInput.value = '';
-    postTextInput.focus();
+
+      postTextInput.value = '';
+      postTextInput.focus();
+    } catch (error) {
+      console.log(error);
+      alert('Postning misslyckades');
+    }
   });
 }
 
