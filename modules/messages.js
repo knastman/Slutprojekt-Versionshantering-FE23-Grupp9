@@ -66,7 +66,10 @@ export function displayMessage(messages) {
 
     formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
-
+  const timeIncludesTime = formattedTime.includes(currentDate);
+  if (timeIncludesTime) {
+    nrOfTrue++; //petras tillägg
+  }
     
     //Delete messeges
     const deleteButton = document.createElement('button');
@@ -74,27 +77,24 @@ export function displayMessage(messages) {
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
     messageBody.appendChild(deleteButton);
-
-
-    // Melker grupp 5 message of the day feature
-    const timeIncludesTime = formattedTime.includes(currentDate);
-    if (timeIncludesTime) {
-      nrOfTrue++; //petras tillägg
-    }
-
-
   }
+
 
   // Melker grupp 5 message of the day feature med petrafix
   console.log(nrOfTrue);
-  // const selected = messagesSection.querySelectorAll('article'); <-- detta blir kaka på kaka pga forloopen gör redan det
+  const selected = messagesSection.querySelectorAll('article');
  
-  const randomIndex = (Math.floor(Math.random()*(nrOfTrue)));
-
-  // const randomSelected = selected[randomIndex];
-  const randomSelected = nrOfTrue[randomIndex]; // Denna måste fixas
+  const randomIndex = (Math.floor(Math.random()*nrOfTrue));
+console.log([randomIndex])
+  const randomSelected = selected[randomIndex]; 
   console.log(randomSelected); 
+  if(randomSelected){
+    const messageOfTheDay = document.createElement('p')
+    messageOfTheDay.innerText = 'Message of the day'
+    messageOfTheDay.classList.add('messageOfTheDay')
+    randomSelected.append(messageOfTheDay)
 
+  }
 
 }
 
