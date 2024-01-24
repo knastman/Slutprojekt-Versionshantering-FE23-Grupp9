@@ -84,10 +84,10 @@ export function handlePostForm() {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    /* Luna Lägger här */ 
+    /* Lunas kod */ 
     const messageSound = new Audio("./sound/message_sent.mp3");
     messageSound.play();
-    /* här slutar */
+    /* Lunas kod slut */
 
     const postText = postTextInput.value;
     const userName = document.getElementById('userName').value;
