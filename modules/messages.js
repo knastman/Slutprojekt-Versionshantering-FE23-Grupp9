@@ -126,6 +126,11 @@ export function handlePostForm() {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    /* Luna Lägger här */ 
+    const messageSound = new Audio("./sound/message_sent.mp3");
+    messageSound.play();
+    /* här slutar */
+
     const postText = postTextInput.value;
     const userName = document.getElementById('userName').value;
 
