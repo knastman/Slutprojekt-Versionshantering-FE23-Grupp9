@@ -81,24 +81,35 @@ export function displayMessage(messages) {
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
     messageBody.appendChild(deleteButton);
 
-        //Gillningar med inkommande petrafix
-        const likeButton = document.createElement('button');
-        const showLikes = document.createElement('p');
-        
-        likeButton.innerText = 'Gilla';
-        let likesTotal = 0;
+    //Gillningar
+    const likeButton = document.createElement('button');
+    const showLikes = document.createElement('p');
     
-        function clickLike () {
-        likesTotal++
-        showLikes.innerText = likesTotal;
-        }
+    likeButton.innerText = 'Gilla';
+    let likesTotal = message.likes || 0;
+    showLikes.innerText = likesTotal;
     
-        likeButton.addEventListener('click', clickLike);
+    function clickLike() {
+      likesTotal++;
+      showLikes.innerText = likesTotal;
     
-        messageBody.appendChild(likeButton);
-        messageBody.appendChild(showLikes);
 
-  }
+      const updatedPostData = {
+        ...message,
+        likes: likesTotal
+      };
+    
+      set(ref(db, `posts/${messageid}`), updatedPostData);
+    }
+    
+    likeButton.addEventListener('click', clickLike);
+    
+    
+
+    messageBody.appendChild(likeButton);
+    messageBody.appendChild(showLikes);
+
+}
 
 
   // Melker grupp 5 message of the day feature med petrafix
@@ -137,7 +148,8 @@ export function handlePostForm() {
     const postData = {
       name: userName,
       text: postText,
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
+      likes: 0
     };
 
     /* Lunas kod */ 
