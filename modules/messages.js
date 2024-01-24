@@ -79,7 +79,6 @@ export function displayMessage(messages) {
     // Melker grupp 5 message of the day feature
     const timeIncludesTime = formattedTime.includes(currentDate);
     if (timeIncludesTime) {
-      console.log('timeIncludesTime är true');
       nrOfTrue++; //petras tillägg
     }
 
@@ -95,10 +94,6 @@ export function displayMessage(messages) {
   // const randomSelected = selected[randomIndex];
   const randomSelected = nrOfTrue[randomIndex]; // Denna måste fixas
   console.log(randomSelected); 
-
-
-
-
 
 
 }
