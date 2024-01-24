@@ -64,7 +64,10 @@ export function displayMessage(messages) {
     const postTimestamp = message.timestamp;
     const postDate = new Date(postTimestamp);
 
-    formattedTime = `${postDate.getHours()}:${postDate.getMinutes()} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+    const hours = postDate.getHours().toString().padStart(2, '0');
+    const minutes = postDate.getMinutes().toString().padStart(2, '0');
+
+    const formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
   const timeIncludesTime = formattedTime.includes(currentDate);
   if (timeIncludesTime) {
@@ -77,6 +80,24 @@ export function displayMessage(messages) {
     deleteButton.classList.add('deleteButton');
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
     messageBody.appendChild(deleteButton);
+
+        //Gillningar med inkommande petrafix
+        const likeButton = document.createElement('button');
+        const showLikes = document.createElement('p');
+        
+        likeButton.innerText = 'Gilla';
+        let likesTotal = 0;
+    
+        function clickLike () {
+        likesTotal++
+        showLikes.innerText = likesTotal;
+        }
+    
+        likeButton.addEventListener('click', clickLike);
+    
+        messageBody.appendChild(likeButton);
+        messageBody.appendChild(showLikes);
+
   }
 
 
