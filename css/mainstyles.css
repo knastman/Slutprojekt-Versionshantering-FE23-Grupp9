@@ -7,6 +7,30 @@
   Main interface css
 **************************************/
 
+/*Elvira*/
+#to-the-top-button {
+  position: fixed;
+  right: 1rem;
+  display: none;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: none;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fa-arrow-up {
+  font-size: 2rem;
+  color: #7ceac9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* /Elvira */
 
 * {
   box-sizing: border-box;
@@ -279,6 +303,17 @@ header{
   /* .copyright {
     font-size: 0.7em;
   } */
+
+  /* Elvira */
+  #to-the-top-button {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .fa-arrow-up {
+    font-size: 2.2rem;
+  }
+  /* /Elvira */
 }
 
 
