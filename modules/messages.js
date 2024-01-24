@@ -65,10 +65,27 @@ export function displayMessage(messages) {
 
 //Hämtar meddelanden från databasen
 
-// Hämtar meddelanden från databasen
+//nytt försök
+
+//version utan error-hantering
+// onValue(ref(db, 'posts'), (snapshot) => {
+//  const posts = snapshot.val();
+//  displayMessage({ Messages: posts });
+//});
+
+
+//version med error-hantering
 onValue(ref(db, 'posts'), (snapshot) => {
-  const posts = snapshot.val();
-  displayMessage({ Messages: posts });
+  try {
+    
+    //påhittat fel för testa
+    // throw new Error('Detta är ett testfel.');
+
+    const posts = snapshot.val();
+    displayMessage({ Messages: posts });
+  } catch (error) {
+    displayError();
+  }
 });
 
 //mitt förslag på error. Blir det som tänkt?Nej dessvärre inte, har provat
