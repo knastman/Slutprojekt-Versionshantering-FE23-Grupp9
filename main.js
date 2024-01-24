@@ -1,7 +1,6 @@
 
 import { db } from './modules/api.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
- 
 import { displayMessage, handlePostForm, displayError } from './modules/messages.js';
 
 // Elvira Ericsson, feel free att ta bort denna kommentar, ville vara tydlig bara.
@@ -25,14 +24,6 @@ onValue(messageDatabaseRef, (snapshot) => {
 // Elvira Ericsson 
 window.addEventListener('scroll', scroll);
 document.getElementById('to-the-top-button').addEventListener('click', scrollToTopFunction);
-
-
-
-
-
-
-
-
 
 
 

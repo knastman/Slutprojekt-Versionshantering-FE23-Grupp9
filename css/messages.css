@@ -126,13 +126,17 @@
 }
 .messageBody{
   padding:10px;
-  float: left;
+  float: left; /* Melkers kod, jag ska ta bort float sen /Petra */
 }
+
+/* Mekers */
 .messageOfTheDay{
  float: right;
  padding: 7% 5px 5px 0;
  color: black;
 }
+/* Mekers slut */
+
 .deleteButton{
   background-image: linear-gradient(#f7f8fa, #e7e9ec);
   border-color: #7a7e84 #797c82 #5a5959#5a5959;
