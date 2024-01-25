@@ -15,15 +15,14 @@ export function displayMessage(messages) {
   const messageObj2 = messages;
   console.log('messageObj');
   console.log(messageObj);
+  console.log('messageObj2');
   console.log(messageObj2);
-  const messagesSection = document.querySelector('.messages');
-  
+  const messagesSection = document.querySelector('.messages');  
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
 
   messagesSection.innerHTML = '';
   let formattedTime = '';
-
 
 // Melker grupp 5 message of the day feature
   const date = new Date();
@@ -35,87 +34,94 @@ export function displayMessage(messages) {
   //Petras tillägg till melkers kod
   let nrOfTrue = 0;
 
+
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
+    // console.log('message');
+    // console.log(message);
+
+    const postTimestamp = message.timestamp;
+    const postDate = new Date(postTimestamp);
+    const hours = postDate.getHours().toString().padStart(2, '0');
+    const minutes = postDate.getMinutes().toString().padStart(2, '0');
+
+    formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+
     const messageContainer = document.createElement('article');
     messageContainer.classList.add("message");
 
     const messageHeader = document.createElement('div');
     const messageHeaderDiv1 = document.createElement('div');
     const messageHeaderDiv2 = document.createElement('div');
-    const messageBody = document.createElement('div');
-
     const messageHeaderText = document.createElement('h3');
+    const messageBody = document.createElement('div');
     const messageText = document.createElement('p');
+    const messageFooter = document.createElement('div');
+    const messageFooterDiv1 = document.createElement('div');
+    const messageFooterDiv2 = document.createElement('div');
 
     messagesSection.append(messageContainer);
-    messageContainer.append(messageHeader, messageBody);
-
-    messageHeader.classList.add("messageHeader");
-    messageBody.classList.add("messageBody");
-
+    messageContainer.append(messageHeader, messageBody, messageFooter);
     messageHeader.append(messageHeaderDiv1, messageHeaderDiv2);
     messageHeaderDiv1.append(messageHeaderText);
     messageBody.append(messageText);
+    messageFooter.append(messageFooterDiv1, messageFooterDiv2);
+
+    messageHeader.classList.add("messageHeader");
+    messageBody.classList.add("messageBody");
+    messageFooter.classList.add("messageFooter");
 
     messageHeaderText.innerText = message.name;
-    messageText.innerText = message.text;
-    
-    const postTimestamp = message.timestamp;
-    const postDate = new Date(postTimestamp);
-
-    const hours = postDate.getHours().toString().padStart(2, '0');
-    const minutes = postDate.getMinutes().toString().padStart(2, '0');
-
-    const formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     messageHeaderDiv2.innerText = formattedTime;
-  const timeIncludesTime = formattedTime.includes(currentDate);
-  if (timeIncludesTime) {
-    nrOfTrue++; //petras tillägg
-  }
-    
-    //Delete messeges
+    messageText.innerText = message.text;
+
+
+    //Like message
+    const likeButton = document.createElement('button');
+    const showLikes = document.createElement('span');
+    likeButton.classList.add('likeButton');
+    messageFooterDiv1.appendChild(likeButton);
+   
+    // likeButton.innerText = 'Gilla';
+    likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
+    let likesTotal = 0;
+
+    function clickLike () {
+    likesTotal++;
+    showLikes.innerText = likesTotal;
+    }
+    likeButton.addEventListener('click', clickLike);
+    likeButton.appendChild(showLikes);
+
+  
+    //Delete messege
     const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Radera';
+    messageFooterDiv2.appendChild(deleteButton);
     deleteButton.classList.add('deleteButton');
+    deleteButton.innerText = 'Radera';
+    
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
-    messageBody.appendChild(deleteButton);
+  
 
-        //Gillningar med inkommande petrafix
-        const likeButton = document.createElement('button');
-        const showLikes = document.createElement('p');
-        
-        likeButton.innerText = 'Gilla';
-        let likesTotal = 0;
-    
-        function clickLike () {
-        likesTotal++
-        showLikes.innerText = likesTotal;
-        }
-    
-        likeButton.addEventListener('click', clickLike);
-    
-        messageBody.appendChild(likeButton);
-        messageBody.appendChild(showLikes);
-
+    //Message of the day (contributor Melker)
+    const timeIncludesTime = formattedTime.includes(currentDate);
+    if (timeIncludesTime) { 
+      nrOfTrue++; //petras add
+    }
   }
 
-
-  // Melker grupp 5 message of the day feature med petrafix
-  console.log(nrOfTrue);
-  const selected = messagesSection.querySelectorAll('article');
- 
+  // Melker grupp 5 message of the day feature
+  // const selected = messagesSection.querySelectorAll('article'); // Hämtar ALLA oavsett datum
+  const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet/logik
   const randomIndex = (Math.floor(Math.random()*nrOfTrue));
-console.log([randomIndex])
-  const randomSelected = selected[randomIndex]; 
-  console.log(randomSelected); 
-  if(randomSelected){
-    const messageOfTheDay = document.createElement('p')
-    messageOfTheDay.innerText = 'Message of the day'
-    messageOfTheDay.classList.add('messageOfTheDay')
-    randomSelected.append(messageOfTheDay)
-
-  }
+  const randomSelected = allArticles[randomIndex]; 
+  // if(randomSelected){ // fyller ingen funktion då den alltid är sann /Petra
+  const messageOfTheDay = document.createElement('span'); //Ändrade från p
+  randomSelected.classList.add('messageOfTheDay');
+  randomSelected.append(messageOfTheDay);
+  // messageOfTheDay.innerText = 'Message of the day';
+  // messageOfTheDay.innerText = 'MOTD'; // hur hämtar jag footern i denna 
+  // }
 
 }
 
