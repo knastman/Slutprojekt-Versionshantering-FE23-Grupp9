@@ -84,11 +84,19 @@ export function displayMessage(messages) {
    
     // likeButton.innerText = 'Gilla';
     likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
-    let likesTotal = 0;
-
-    function clickLike () {
-    likesTotal++;
+    let likesTotal = message.likes || 0;
     showLikes.innerText = likesTotal;
+    
+    function clickLike() {
+      likesTotal++;
+      showLikes.innerText = likesTotal;
+    
+      const updatedPostData = {
+        ...message,
+        likes: likesTotal
+      };
+    
+      set(ref(db, `posts/${messageid}`), updatedPostData);
     }
     likeButton.addEventListener('click', clickLike);
     likeButton.appendChild(showLikes);
@@ -143,7 +151,8 @@ export function handlePostForm() {
     const postData = {
       name: userName,
       text: postText,
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
+      likes: 0
     };
 
     /* Lunas kod */ 
