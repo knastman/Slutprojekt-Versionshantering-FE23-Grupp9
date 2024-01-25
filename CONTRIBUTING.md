@@ -1,12 +1,10 @@
 ## Info
 
-Vi är dessvärre inte klara med grunden än men tar supergärna emot contrubutes så fort allt är på plats. Snart!
-
-Nedan är lista på saker ni kan lägga till
-
+Nedan är lista på saker ni kan lägga till (som är sånt vi inte själva kommer göra eller har fått av andra redan)
 
 * Baserat på tidpunkt så ska vissa meddelanden gömmas.
-* Random meddelanden blir “Message of the day”
-* Man kan måste ha unika display namn.
+* Man kan måste ha unika display namn. 
 * Man får en alertbox när något går fel under publiceringen/submit av meddelandet.
+* Webbsidan kommer ihåg din identitet.
+* Man kan måste ha unika display namn.
 
