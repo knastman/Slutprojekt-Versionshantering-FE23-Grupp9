@@ -92,6 +92,7 @@ export function displayMessage(messages) {
         await set(ref(db, 'posts/' + messageid), postData, newPostRef);
       }
     });
+
     //Like message
     const likeButton = document.createElement('button');
     const showLikes = document.createElement('span');
@@ -133,7 +134,7 @@ export function displayMessage(messages) {
   }
 
   // Melker grupp 5 message of the day feature
-  // const selected = messagesSection.querySelectorAll('article'); // Hämtar ALLA oavsett datum
+  // const selected = messagesSection.querySelectorAll('article'); // Hämtar ALLA oavsett datum /Petra
   const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet/logik
   const randomIndex = Math.floor(Math.random() * nrOfTrue);
   const randomSelected = allArticles[randomIndex];
