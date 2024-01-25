@@ -58,6 +58,12 @@ img{
   display: none;
 }
 
+a{
+  color:#FFF;
+}
+a:hover{
+  opacity: 0.6;
+}
 
 
 h1,h2,h3,h4,h5,h6 {
@@ -93,6 +99,9 @@ header{
 .logo{
   width:150px;
   padding-top:5px;
+}
+.logo:hover{
+  opacity:0.75;
 }
 
 .top-nav {
@@ -297,10 +306,6 @@ header{
     height: 50px;
     padding: 1.4em;
   }
-
-  /* .copyright {
-    font-size: 0.7em;
-  } */
 
   /* Elvira */
   #to-the-top-button {
