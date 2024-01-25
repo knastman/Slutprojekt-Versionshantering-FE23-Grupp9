@@ -14,15 +14,12 @@ export function displayMessage(messages) {
   const messageObj = messages.Messages;
   // const messageObj2 = messages;
  
-  const messagesSection = document.querySelector('.messages');  
-  // hideElements(allSections);
-  // movieListSection.classList.remove("hide");
-
+  const messagesSection = document.querySelector('.messages'); 
   messagesSection.innerHTML = '';
   
   let formattedTime = '';
 
-// Melker grupp 5 message of the day feature
+  /********* Message of the day (contributor Melker) *******/ 
   const date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
@@ -34,8 +31,6 @@ export function displayMessage(messages) {
 
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
-    // console.log('message');
-    // console.log(message);
 
     const postTimestamp = message.timestamp;
     const postDate = new Date(postTimestamp);
@@ -52,7 +47,13 @@ export function displayMessage(messages) {
     const messageHeaderDiv2 = document.createElement('div');
     const messageHeaderText = document.createElement('h3');
     const messageBody = document.createElement('div');
-    const messageText = document.createElement('p');
+    const messageText = document.createElement('p'); 
+
+    // const messageText = document.createElement('input'); //Alriks
+    // const messageText = document.createElement('textarea'); //Testar med textarea istälelt
+    // messageText.classList.add('EditableInput');//Alriks
+
+
     const messageFooter = document.createElement('div');
     const messageFooterDiv1 = document.createElement('div');
     const messageFooterDiv2 = document.createElement('div');
@@ -70,7 +71,30 @@ export function displayMessage(messages) {
 
     messageHeaderText.innerText = message.name;
     messageHeaderDiv2.innerText = formattedTime;
-    messageText.innerText = message.text;
+    messageText.innerText = message.text; //Orginal
+
+
+    //Alriks ******************************/
+    // messageText.value = message.text;//Alriks
+    // messageText.addEventListener('keypress', async (event) => {
+    //   if (event.key === 'Enter') {
+    //     alert('edited');
+    //     messageText.blur();
+
+    //     const postData = {
+    //       text: messageText.value,
+    //       timestamp: serverTimestamp(),
+    //     };
+
+    //     const messageSound = new Audio('./sound/message_sent.mp3');
+    //     messageSound.play();
+
+    //     await set(ref(db, 'posts/' + messageid), postData, newPostRef);
+    //   }
+    // });
+
+    //Alriks  slut ******************************/
+
 
 
     //Like message
@@ -78,8 +102,6 @@ export function displayMessage(messages) {
     const showLikes = document.createElement('span');
     likeButton.classList.add('likeButton');
     messageFooterDiv1.appendChild(likeButton);
-   
-    // likeButton.innerText = 'Gilla';
     likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
     let likesTotal = message.likes || 0;
     showLikes.innerText = likesTotal;
@@ -95,11 +117,12 @@ export function displayMessage(messages) {
     
       set(ref(db, `posts/${messageid}`), updatedPostData);
     }
+
     likeButton.addEventListener('click', clickLike);
     likeButton.appendChild(showLikes);
 
-  
-    //Delete messege
+
+    //Delete message
     const deleteButton = document.createElement('button');
     messageFooterDiv2.appendChild(deleteButton);
     deleteButton.classList.add('deleteButton');
@@ -107,24 +130,22 @@ export function displayMessage(messages) {
     
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
   
-    //Message of the day (contributor Melker)
+    /********* Message of the day (contributor Melker) *******/ 
     const timeIncludesTime = formattedTime.includes(currentDate);
     if (timeIncludesTime) { 
       nrOfTrue++; //petras add
     }
   }
 
-  // Melker grupp 5 message of the day feature
-  // const selected = messagesSection.querySelectorAll('article'); // Hämtar ALLA oavsett datum
+  /********* Message of the day (contributor Melker) *******/ 
   const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet/logik
   const randomIndex = (Math.floor(Math.random()*nrOfTrue));
   const randomSelected = allArticles[randomIndex]; 
   // if(randomSelected){ // fyller ingen funktion då den alltid är sann /Petra
-  const messageOfTheDay = document.createElement('span'); //Ändrade från p
-  randomSelected.classList.add('messageOfTheDay');
-  randomSelected.append(messageOfTheDay);
+  // const messageOfTheDay = document.createElement('span'); //Ändrade från p
+  // randomSelected.append(messageOfTheDay);
   // messageOfTheDay.innerText = 'Message of the day';
-  // messageOfTheDay.innerText = 'MOTD'; // hur hämtar jag footern i denna 
+  randomSelected.classList.add('messageOfTheDay'); // Ger den blåa bakgrunden
   // }
 
 }
@@ -151,7 +172,7 @@ export function handlePostForm() {
       likes: 0
     };
 
-    /* Lunas kod */ 
+    /********* Sound when message is sent (contributor Luna) *******/ 
     const messageSound = new Audio("./sound/message_sent.mp3");
     messageSound.play();
     /* Lunas kod slut */
@@ -173,12 +194,12 @@ export function handlePostForm() {
 export async function deleteMessage(messageid) {
   if (confirm('Are you sure?')) {
     try {
-
       const messageRef = ref(db, `posts/${messageid}`);
-
       await set(messageRef, null);
-    } catch (error) {
+    } 
+    catch (error) {
     // } catch (displayError) {
+      displayError();
       console.error('Error deleting message:', error);
     }
   }

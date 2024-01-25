@@ -1,4 +1,3 @@
-
 import { db } from './modules/api.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 import { displayMessage, handlePostForm, displayError } from './modules/messages.js';
