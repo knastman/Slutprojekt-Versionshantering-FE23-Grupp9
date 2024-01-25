@@ -89,7 +89,7 @@ export function displayMessage(messages) {
         const messageSound = new Audio('./sound/message_sent.mp3');
         messageSound.play();
 
-        await set(ref(db, 'posts/' + messageid), postData);
+        await set(ref(db, 'posts/' + messageid), postData, newPostRef);
       }
     });
     //Like message
