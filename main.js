@@ -2,6 +2,7 @@
 import { db } from './modules/api.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 import { displayMessage, handlePostForm, displayError } from './modules/messages.js';
+import * as cookies from './modules/cookies.js';
 
 // Elvira Ericsson, feel free att ta bort denna kommentar, ville vara tydlig bara.
 import { scroll, scrollToTopFunction } from './modules/scrollToTop.js';
@@ -24,6 +25,13 @@ onValue(messageDatabaseRef, (snapshot) => {
 // Elvira Ericsson 
 window.addEventListener('scroll', scroll);
 document.getElementById('to-the-top-button').addEventListener('click', scrollToTopFunction);
+
+// Hämtar användarnamn från cookies
+const username = document.querySelector("#userName");
+username.value = cookies.getCookie("username") ?? "";
+
+// Sparar användarnamn i cookies
+username.addEventListener('focusout', (e) => cookies.setCookie("username", e.target.value));
 
 
 
