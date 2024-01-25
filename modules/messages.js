@@ -13,15 +13,13 @@ export function displayMessage(messages) {
   //Petra kolla koden här o rensa
   const messageObj = messages.Messages;
   // const messageObj2 = messages;
-  // console.log('messageObj');
-  // console.log(messageObj);
-  // console.log('messageObj2');
-  // console.log(messageObj2);
+ 
   const messagesSection = document.querySelector('.messages');  
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
 
   messagesSection.innerHTML = '';
+  
   let formattedTime = '';
 
 // Melker grupp 5 message of the day feature
@@ -33,7 +31,6 @@ export function displayMessage(messages) {
 
   //Petras tillägg till melkers kod
   let nrOfTrue = 0;
-
 
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
@@ -110,7 +107,6 @@ export function displayMessage(messages) {
     
     deleteButton.addEventListener('click', () => deleteMessage(messageid));
   
-
     //Message of the day (contributor Melker)
     const timeIncludesTime = formattedTime.includes(currentDate);
     if (timeIncludesTime) { 
