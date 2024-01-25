@@ -54,7 +54,7 @@ export function displayMessage(messages) {
     const messageHeaderText = document.createElement('h3');
     const messageBody = document.createElement('div');
     //const messageText = document.createElement('p');
-    const messageText = document.createElement('input');
+    const messageText = document.createElement('textarea');
     messageText.classList.add('EditableInput');
 
     const messageFooter = document.createElement('div');
@@ -76,16 +76,21 @@ export function displayMessage(messages) {
     messageHeaderDiv2.innerText = formattedTime;
     //messageText.innerText = message.text;
     messageText.value = message.text;
+    //anpassa textarea baserat på meddelandet
+    messageText.style.height= messageText.scrollHeight+10+"px";
+
+    // trycker på enter fördigställa för edita ett meddelande
     messageText.addEventListener('keypress', async (event) => {
       if (event.key === 'Enter') {
-        alert('edited');
         messageText.blur();
 
         const postData = {
+          name: message.name,
           text: messageText.value,
           timestamp: serverTimestamp(),
         };
-
+        //edited indikation som är en string förre timestamp
+        messageHeaderDiv2.innerHTML = '<em>(edited)</em> &nbsp; '+formattedTime;  
         const messageSound = new Audio('./sound/message_sent.mp3');
         messageSound.play();
 
