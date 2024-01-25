@@ -277,3 +277,10 @@
 
 
 
+/* Alriks style */
+.EditableInput{
+  width:100%;
+  background-color: inherit;
+  border-color: transparent;
+
+}
