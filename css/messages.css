@@ -13,6 +13,8 @@
   /* width:100vw; */
   /* height:100%; */
   background-color: #272727; 
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 
@@ -26,8 +28,10 @@
   gap:8px;
   /* width:100vw; */
 }
-#messageForm span{
+
+#messageForm span {
   font-size: 0.8em;
+  display:none;
 }
 
 #messageForm{
@@ -71,10 +75,10 @@
   border-bottom-color: #a2a6ac;
 }
 
-
 .intro-text{
-  padding:5px 15px 10px 15px;
+  padding:5px 15px 15px 15px;
   border-top:1px solid #656464;
+  border-bottom:1px solid #a5a5a5;
 }
 
 /*********  Messages *****/
@@ -255,20 +259,18 @@
     background-color: #272727;
     display:grid;
     padding:10px 0 10px 0;
-    /* display:flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-direction: column;
-    gap:5px; */
-    
   }
   .form{
     background-color: #272727;
-    /* height:100%; */
-    /* height:100vw; */
+    display:block;
   }
   #messageForm div{
     margin:0 20px 0 20px;
+  }
+
+  #messageForm span {
+    font-size: 0.8em;
+    display:block;
   }
 
 
@@ -283,6 +285,7 @@
 
   .intro-text{
     padding:20px 20px 40px 20px;
+    border-bottom:0;
     /* height:100%;
     height:20vw; */
   }
