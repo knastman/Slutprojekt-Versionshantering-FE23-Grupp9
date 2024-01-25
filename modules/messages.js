@@ -12,11 +12,11 @@ const errorContainer = document.querySelector('#errorContainer');
 export function displayMessage(messages) {
   //Petra kolla koden här o rensa
   const messageObj = messages.Messages;
-  const messageObj2 = messages;
-  console.log('messageObj');
-  console.log(messageObj);
-  console.log('messageObj2');
-  console.log(messageObj2);
+  // const messageObj2 = messages;
+  // console.log('messageObj');
+  // console.log(messageObj);
+  // console.log('messageObj2');
+  // console.log(messageObj2);
   const messagesSection = document.querySelector('.messages');  
   // hideElements(allSections);
   // movieListSection.classList.remove("hide");
