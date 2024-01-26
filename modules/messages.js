@@ -1,5 +1,6 @@
 import { db } from './api.js';
 import { push, serverTimestamp, set, ref} from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
+import { getCookie } from './cookies.js';
 
 const allSections = document.querySelectorAll('section');
 const errorContainer = document.querySelector('#errorContainer');
@@ -107,19 +108,30 @@ export function displayMessage(messages) {
     showLikes.innerText = likesTotal;
     
     function clickLike() {
-      likesTotal++;
-      showLikes.innerText = likesTotal;
+      const hasClickedCookie = getCookie(`likeButtonClicked_${messageid}`);
+      
+      if (!hasClickedCookie) {
+        likesTotal++;
+        showLikes.innerText = likesTotal;
     
-      const updatedPostData = {
-        ...message,
-        likes: likesTotal
-      };
+        const updatedPostData = {
+          ...message,
+          likes: likesTotal
+        };
     
-      set(ref(db, `posts/${messageid}`), updatedPostData);
+        set(ref(db, `posts/${messageid}`), updatedPostData);
+    
+        document.cookie = `likeButtonClicked_${messageid}=true; path=/;`;
+        
+        likeButton.disabled = true;
+      }
     }
-
+    
     likeButton.addEventListener('click', clickLike);
     likeButton.appendChild(showLikes);
+    
+
+    
 
 
     //Delete message
