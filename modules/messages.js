@@ -69,28 +69,28 @@ export function displayMessage(messages) {
     messageFooter.classList.add("messageFooter");
 
     messageHeaderText.innerText = message.name;
-    messageHeaderDiv2.innerText = formattedTime;
+    messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime;
     //messageText.innerText = message.text;
     messageText.value = message.text;
     //anpassa textarea baserat på meddelandet
     messageText.style.height= messageText.scrollHeight+10+"px";
 
     // trycker på enter fördigställa för edita ett meddelande
-    messageText.addEventListener('keypress', async (event) => {
-      if (event.key === 'Enter') {
+    messageText.addEventListener('keypress',  (event) => {
+      if (!event.shiftKey && event.key === 'Enter' ) {
         messageText.blur();
-
-        const postData = {
-          name: message.name,
-          text: messageText.value,
+        const updatedPostData = {
+          ...message,
+          text: messageText.value,  
+          edited: true,//edited indikation som är en string förre timestamp
           timestamp: serverTimestamp(),
         };
-        //edited indikation som är en string förre timestamp
-        messageHeaderDiv2.innerHTML = '<em>(edited)</em> &nbsp; '+formattedTime;  
         const messageSound = new Audio('./sound/message_sent.mp3');
         messageSound.play();
-
-         await set(ref(db, 'posts/' + messageid), postData, newPostRef);
+        messageText.style.height= messageText.scrollHeight+10+"px";
+        messageText.scrollTop=0;
+        // await set(ref(db, 'posts/' + messageid), postData, newPostRef);
+         set(ref(db, `posts/${messageid}`), updatedPostData);
        }
      });
 
