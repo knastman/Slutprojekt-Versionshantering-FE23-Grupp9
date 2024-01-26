@@ -1,6 +1,7 @@
 import { db } from './api.js';
 import { push, serverTimestamp, set, ref} from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 import { getCookie } from './cookies.js';
+import { profanityFilter } from './profanity.js';
 
 const allSections = document.querySelectorAll('section');
 // const errorContainer = document.querySelector('#errorContainer');
@@ -72,9 +73,9 @@ export function displayMessage(messages) {
       messageBody.classList.add("messageBody");
       messageFooter.classList.add("messageFooter");
 
-      messageHeaderText.innerText = message.name;
+      messageHeaderText.innerText = profanityFilter(message.name);
       messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime; //Alriks
-      messageText.value = message.text;
+      messageText.value = profanityFilter(message.text);
 
 
       /********* Edit messages(contributor Alrik) *******/ 
