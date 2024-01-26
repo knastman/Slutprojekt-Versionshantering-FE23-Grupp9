@@ -6,5 +6,5 @@ Nedan är lista på saker ni kan lägga till (som är sånt vi inte själva komm
 * Man kan måste ha unika display namn. 
 * Man får en alertbox när något går fel under publiceringen/submit av meddelandet.
 * Webbsidan kommer ihåg din identitet.
-* Man kan måste ha unika display namn.
+
 
