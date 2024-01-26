@@ -193,7 +193,6 @@
 
 /* Melkers funktion med petras utseende */
 .messageOfTheDay{
-  color:red; 
   color:#fff; 
   background-color: #00BAF0 !important;
   background: radial-gradient(circle, #00BAF0 0%, #30ccfb 51%, #02a1d2 100%);
@@ -209,13 +208,17 @@
 
 
 /* Alriks style */
-/* .EditableInput{
+.EditableInput{
   width:100%;
-  height:auto;
   background-color: inherit;
   border-color: transparent;
-  font-family: inherit;
-} */
+  overflow: auto;
+  font-size: 1em;
+  color:#33353d;
+  font-family: inherit; /* Tillägg Petra */
+}
+
+
 
 
 
@@ -277,12 +280,3 @@
 }
 
 
-/* Alriks style */
-.EditableInput{
-  width:100%;
-  background-color: inherit;
-  border-color: transparent;
-  overflow: auto;
-  font-size: 1em;
-  color:#33353d;
-}

@@ -48,9 +48,9 @@ export function displayMessage(messages) {
     const messageHeaderText = document.createElement('h3');
     const messageBody = document.createElement('div');
 
-    //const messageText = document.createElement('p');
-    const messageText = document.createElement('textarea');
-    messageText.classList.add('EditableInput');
+    //const messageText = document.createElement('p'); (orginal)
+    const messageText = document.createElement('textarea');//Alriks
+    messageText.classList.add('EditableInput');//Alriks
 
 
     const messageFooter = document.createElement('div');
@@ -70,8 +70,10 @@ export function displayMessage(messages) {
 
     messageHeaderText.innerText = message.name;
     messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime;
-    //messageText.innerText = message.text;
     messageText.value = message.text;
+
+    /********* Edit messages(contributor Alrik) *******/ 
+
     //anpassa textarea baserat på meddelandet
     messageText.style.height= messageText.scrollHeight+10+"px";
 
@@ -93,6 +95,7 @@ export function displayMessage(messages) {
          set(ref(db, `posts/${messageid}`), updatedPostData);
        }
      });
+    //Alriks  slut 
 
     //Like message
     const likeButton = document.createElement('button');
@@ -135,15 +138,16 @@ export function displayMessage(messages) {
   }
 
   /********* Message of the day (contributor Melker) *******/ 
-  const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet/logik
+  const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet
   const randomIndex = (Math.floor(Math.random()*nrOfTrue));
   const randomSelected = allArticles[randomIndex]; 
-  // if(randomSelected){ // fyller ingen funktion då den alltid är sann /Petra
+  // if(randomSelected){ // är alltid är sann så tog bort /Petra
+
   // const messageOfTheDay = document.createElement('span'); //Ändrade från p
   // randomSelected.append(messageOfTheDay);
   // messageOfTheDay.innerText = 'Message of the day';
   randomSelected.classList.add('messageOfTheDay'); // Ger den blåa bakgrunden
-  // }
+
 
 }
 
@@ -195,7 +199,6 @@ export async function deleteMessage(messageid) {
       await set(messageRef, null);
     } 
     catch (error) {
-    // } catch (displayError) {
       displayError();
       console.error('Error deleting message:', error);
     }
