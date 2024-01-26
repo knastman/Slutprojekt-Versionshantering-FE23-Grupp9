@@ -3,8 +3,7 @@ import { push, serverTimestamp, set, ref} from 'https://www.gstatic.com/firebase
 import { getCookie } from './cookies.js';
 
 const allSections = document.querySelectorAll('section');
-const errorContainer = document.querySelector('#errorContainer');
-
+// const errorContainer = document.querySelector('#errorContainer');
 
 /****************************************
  Bygger gränssnitt för meddelandevisning
@@ -26,9 +25,7 @@ export function displayMessage(messages) {
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   let currentDate = `${day}-${month}-${year}`;
-
-  //Petras tillägg till melkers kod
-  let nrOfTrue = 0;
+  let nrOfTrue = 0;//Petras tillägg till melkers kod
 
   for (const messageid of Object.keys(messageObj).reverse()) {
     const message = messageObj[messageid];
@@ -39,128 +36,125 @@ export function displayMessage(messages) {
     const minutes = postDate.getMinutes().toString().padStart(2, '0');
 
     formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
-
-    const messageContainer = document.createElement('article');
-    messageContainer.classList.add("message");
-
-    const messageHeader = document.createElement('div');
-    const messageHeaderDiv1 = document.createElement('div');
-    const messageHeaderDiv2 = document.createElement('div');
-    const messageHeaderText = document.createElement('h3');
-    const messageBody = document.createElement('div');
-
-    //const messageText = document.createElement('p'); (orginal)
-    const messageText = document.createElement('textarea');//Alriks
-    messageText.classList.add('EditableInput');//Alriks
-
-
-    const messageFooter = document.createElement('div');
-    const messageFooterDiv1 = document.createElement('div');
-    const messageFooterDiv2 = document.createElement('div');
-
-    messagesSection.append(messageContainer);
-    messageContainer.append(messageHeader, messageBody, messageFooter);
-    messageHeader.append(messageHeaderDiv1, messageHeaderDiv2);
-    messageHeaderDiv1.append(messageHeaderText);
-    messageBody.append(messageText);
-    messageFooter.append(messageFooterDiv1, messageFooterDiv2);
-
-    messageHeader.classList.add("messageHeader");
-    messageBody.classList.add("messageBody");
-    messageFooter.classList.add("messageFooter");
-
-    messageHeaderText.innerText = message.name;
-    messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime;
-    messageText.value = message.text;
-
-    /********* Edit messages(contributor Alrik) *******/ 
-
-    //anpassa textarea baserat på meddelandet
-    messageText.style.height= messageText.scrollHeight+10+"px";
-
-    // trycker på enter fördigställa för edita ett meddelande
-    messageText.addEventListener('keypress',  (event) => {
-      if (!event.shiftKey && event.key === 'Enter' ) {
-        messageText.blur();
-        const updatedPostData = {
-          ...message,
-          text: messageText.value,  
-          edited: true,//edited indikation som är en string förre timestamp
-          timestamp: serverTimestamp(),
-        };
-        const messageSound = new Audio('./sound/message_sent.mp3');
-        messageSound.play();
-        messageText.style.height= messageText.scrollHeight+10+"px";
-        messageText.scrollTop=0;
-        // await set(ref(db, 'posts/' + messageid), postData, newPostRef);
-         set(ref(db, `posts/${messageid}`), updatedPostData);
-       }
-     });
-    //Alriks  slut 
-
-    //Like message
-    const likeButton = document.createElement('button');
-    const showLikes = document.createElement('span');
-    likeButton.classList.add('likeButton');
-    messageFooterDiv1.appendChild(likeButton);
-    likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
-    let likesTotal = message.likes || 0;
-    showLikes.innerText = likesTotal;
     
-    function clickLike() {
-      const hasClickedCookie = getCookie(`likeButtonClicked_${messageid}`);
+    //Visar inte meddelande äldre än "daysOldMessages" dagar //Petras feature
+    const daysOldMessages = 3;
+    const messageDate = `${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+    const oldDateDay = day - daysOldMessages;
+    const oldDate = `${oldDateDay}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
+
+    if (messageDate > oldDate ){
+      const messageContainer = document.createElement('article');
+      messageContainer.classList.add("message");
+
+      const messageHeader = document.createElement('div');
+      const messageHeaderDiv1 = document.createElement('div');
+      const messageHeaderDiv2 = document.createElement('div');
+      const messageHeaderText = document.createElement('h3');
+      const messageBody = document.createElement('div');
+
+      //const messageText = document.createElement('p'); (orginal)
+      const messageText = document.createElement('textarea');//Alriks
+      messageText.classList.add('EditableInput');//Alriks
+
+      const messageFooter = document.createElement('div');
+      const messageFooterDiv1 = document.createElement('div');
+      const messageFooterDiv2 = document.createElement('div');
+
+      messagesSection.append(messageContainer);
+      messageContainer.append(messageHeader, messageBody, messageFooter);
+      messageHeader.append(messageHeaderDiv1, messageHeaderDiv2);
+      messageHeaderDiv1.append(messageHeaderText);
+      messageBody.append(messageText);
+      messageFooter.append(messageFooterDiv1, messageFooterDiv2);
+
+      messageHeader.classList.add("messageHeader");
+      messageBody.classList.add("messageBody");
+      messageFooter.classList.add("messageFooter");
+
+      messageHeaderText.innerText = message.name;
+      messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime; //Alriks
+      messageText.value = message.text;
+
+
+      /********* Edit messages(contributor Alrik) *******/ 
+
+      //anpassa textarea baserat på meddelandet
+      messageText.style.height= messageText.scrollHeight+10+"px";
+
+      // trycker på enter fördigställa för edita ett meddelande
+      messageText.addEventListener('keypress',  (event) => {
+        if (!event.shiftKey && event.key === 'Enter' ) {
+          messageText.blur();
+          const updatedPostData = {
+            ...message,
+            text: messageText.value,  
+            edited: true,//edited indikation som är en string förre timestamp
+            timestamp: serverTimestamp(),
+          };
+          const messageSound = new Audio('./sound/message_sent.mp3');
+          messageSound.play();
+          messageText.style.height= messageText.scrollHeight+10+"px";
+          messageText.scrollTop=0;
+          // await set(ref(db, 'posts/' + messageid), postData, newPostRef);
+          set(ref(db, `posts/${messageid}`), updatedPostData);
+        }
+      });
+      //Alriks  slut 
+
+      //Like message
+      const likeButton = document.createElement('button');
+      const showLikes = document.createElement('span');
+      likeButton.classList.add('likeButton');
+      messageFooterDiv1.appendChild(likeButton);
+      likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>';
+      let likesTotal = message.likes || 0;
+      showLikes.innerText = likesTotal;
       
-      if (!hasClickedCookie) {
-        likesTotal++;
-        showLikes.innerText = likesTotal;
-    
-        const updatedPostData = {
-          ...message,
-          likes: likesTotal
-        };
-    
-        set(ref(db, `posts/${messageid}`), updatedPostData);
-    
-        document.cookie = `likeButtonClicked_${messageid}=true; path=/;`;
+      function clickLike() {
+        const hasClickedCookie = getCookie(`likeButtonClicked_${messageid}`);
         
-        likeButton.disabled = true;
+        if (!hasClickedCookie) {
+          likesTotal++;
+          showLikes.innerText = likesTotal;
+      
+          const updatedPostData = {
+            ...message,
+            likes: likesTotal
+          };
+      
+          set(ref(db, `posts/${messageid}`), updatedPostData);
+      
+          document.cookie = `likeButtonClicked_${messageid}=true; path=/;`;
+          
+          likeButton.disabled = true;
+        }
       }
-    }
-    
-    likeButton.addEventListener('click', clickLike);
-    likeButton.appendChild(showLikes);
-    
+      
+      likeButton.addEventListener('click', clickLike);
+      likeButton.appendChild(showLikes);
 
+      //Delete message
+      const deleteButton = document.createElement('button');
+      messageFooterDiv2.appendChild(deleteButton);
+      deleteButton.classList.add('deleteButton');
+      deleteButton.innerText = 'Radera';
+      
+      deleteButton.addEventListener('click', () => deleteMessage(messageid));
     
-
-
-    //Delete message
-    const deleteButton = document.createElement('button');
-    messageFooterDiv2.appendChild(deleteButton);
-    deleteButton.classList.add('deleteButton');
-    deleteButton.innerText = 'Radera';
-    
-    deleteButton.addEventListener('click', () => deleteMessage(messageid));
-  
-    /********* Message of the day (contributor Melker) *******/ 
-    const timeIncludesTime = formattedTime.includes(currentDate);
-    if (timeIncludesTime) { 
-      nrOfTrue++; //petras add
-    }
-  }
+      /********* Message of the day (contributor Melker) *******/ 
+      const timeIncludesTime = formattedTime.includes(currentDate);
+      if (timeIncludesTime) { 
+        nrOfTrue++; //petras add
+      }
+    } //ifsatsen som hämtar endast nyaare meddelanden slut
+  } // forsats slut
 
   /********* Message of the day (contributor Melker) *******/ 
   const allArticles = messagesSection.querySelectorAll('article'); //Bytte namn för lättläslighet
   const randomIndex = (Math.floor(Math.random()*nrOfTrue));
   const randomSelected = allArticles[randomIndex]; 
-  // if(randomSelected){ // är alltid är sann så tog bort /Petra
-
-  // const messageOfTheDay = document.createElement('span'); //Ändrade från p
-  // randomSelected.append(messageOfTheDay);
-  // messageOfTheDay.innerText = 'Message of the day';
   randomSelected.classList.add('messageOfTheDay'); // Ger den blåa bakgrunden
-
-
 }
 
 
@@ -240,8 +234,6 @@ export function displayError(error) {
 
 }
 
-
-//Nedan behövs troligen inte
 
 /*********************************
   Hide sections  
