@@ -47,11 +47,10 @@ export function displayMessage(messages) {
     const messageHeaderDiv2 = document.createElement('div');
     const messageHeaderText = document.createElement('h3');
     const messageBody = document.createElement('div');
-    const messageText = document.createElement('p'); 
 
-    // const messageText = document.createElement('input'); //Alriks
-    // const messageText = document.createElement('textarea'); //Testar med textarea istälelt
-    // messageText.classList.add('EditableInput');//Alriks
+    //const messageText = document.createElement('p');
+    const messageText = document.createElement('textarea');
+    messageText.classList.add('EditableInput');
 
 
     const messageFooter = document.createElement('div');
@@ -70,32 +69,30 @@ export function displayMessage(messages) {
     messageFooter.classList.add("messageFooter");
 
     messageHeaderText.innerText = message.name;
-    messageHeaderDiv2.innerText = formattedTime;
-    messageText.innerText = message.text; //Orginal
+    messageHeaderDiv2.innerHTML= message.edited ? '<em>(edited)</em> &nbsp; '+formattedTime:formattedTime;
+    //messageText.innerText = message.text;
+    messageText.value = message.text;
+    //anpassa textarea baserat på meddelandet
+    messageText.style.height= messageText.scrollHeight+10+"px";
 
-
-    //Alriks ******************************/
-    // messageText.value = message.text;//Alriks
-    // messageText.addEventListener('keypress', async (event) => {
-    //   if (event.key === 'Enter') {
-    //     alert('edited');
-    //     messageText.blur();
-
-    //     const postData = {
-    //       text: messageText.value,
-    //       timestamp: serverTimestamp(),
-    //     };
-
-    //     const messageSound = new Audio('./sound/message_sent.mp3');
-    //     messageSound.play();
-
-    //     await set(ref(db, 'posts/' + messageid), postData, newPostRef);
-    //   }
-    // });
-
-    //Alriks  slut ******************************/
-
-
+    // trycker på enter fördigställa för edita ett meddelande
+    messageText.addEventListener('keypress',  (event) => {
+      if (!event.shiftKey && event.key === 'Enter' ) {
+        messageText.blur();
+        const updatedPostData = {
+          ...message,
+          text: messageText.value,  
+          edited: true,//edited indikation som är en string förre timestamp
+          timestamp: serverTimestamp(),
+        };
+        const messageSound = new Audio('./sound/message_sent.mp3');
+        messageSound.play();
+        messageText.style.height= messageText.scrollHeight+10+"px";
+        messageText.scrollTop=0;
+        // await set(ref(db, 'posts/' + messageid), postData, newPostRef);
+         set(ref(db, `posts/${messageid}`), updatedPostData);
+       }
+     });
 
     //Like message
     const likeButton = document.createElement('button');

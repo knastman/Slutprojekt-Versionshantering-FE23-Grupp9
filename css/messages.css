@@ -277,4 +277,12 @@
 }
 
 
-
+/* Alriks style */
+.EditableInput{
+  width:100%;
+  background-color: inherit;
+  border-color: transparent;
+  overflow: auto;
+  font-size: 1em;
+  color:#33353d;
+}
