@@ -4,17 +4,15 @@ import { getCookie } from './cookies.js';
 import { profanityFilter } from './profanity.js';
 
 const allSections = document.querySelectorAll('section');
-// const errorContainer = document.querySelector('#errorContainer');
 
 /****************************************
  Bygger gränssnitt för meddelandevisning
 *****************************************/
 
 export function displayMessage(messages) {
-  //Petra kolla koden här o rensa
   const messageObj = messages.Messages;
-  // const messageObj2 = messages;
- 
+  const daysOldMessages = 3;
+
   const messagesSection = document.querySelector('.messages'); 
   messagesSection.innerHTML = '';
   
@@ -39,7 +37,7 @@ export function displayMessage(messages) {
     formattedTime = `${hours}:${minutes} | ${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     
     //Visar inte meddelande äldre än "daysOldMessages" dagar //Petras feature
-    const daysOldMessages = 3;
+    
     const messageDate = `${postDate.getDate()}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
     const oldDateDay = day - daysOldMessages;
     const oldDate = `${oldDateDay}-${postDate.getMonth() + 1}-${postDate.getFullYear()}`;
