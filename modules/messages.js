@@ -127,8 +127,22 @@ export function displayMessage(messages) {
           document.cookie = `likeButtonClicked_${messageid}=true; path=/;`;
           
           likeButton.disabled = true;
-        }
+        } else {
+        likesTotal--;
+        showLikes.innerText = likesTotal;
+    
+        const updatedPostData = {
+          ...message,
+          likes: likesTotal
+        };
+    
+        set(ref(db, `posts/${messageid}`), updatedPostData);
+    
+        document.cookie = `likeButtonClicked_${messageid}=; path=/;`;
+    
+        likeButton.disabled = false;
       }
+    }
       
       likeButton.addEventListener('click', clickLike);
       likeButton.appendChild(showLikes);
