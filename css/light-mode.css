@@ -1,0 +1,180 @@
+
+/*** Checkbox ****/
+.vaxla{
+  float:left;
+  margin:0px 0px 0px 5px;
+}
+
+
+.lightmodeForm{
+  /* width:80%;
+  margin:0 auto; */
+  padding:5px 5px 5px 15px;
+  display: flex;
+  gap:10px;
+  align-items: center;
+  background-color: #42454e;
+}
+
+.lightmode .lightmodeForm{
+  background-color: #c1e6f6;
+}
+
+.lightmodeForm input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.lightmodeForm label {
+  --size: 50px;
+  cursor: pointer;
+  width: var(--size);
+  height: calc(var(--size) / 2);
+  background: #0076a5;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.lightmodeForm label:after {
+  content: '';
+  position: absolute;
+  top: 6%;
+  left: 2.5%;
+  width: calc(50% - 5%);
+  height: calc(100% - 11%);
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.lightmodeForm input:checked + label {
+  /* background: #bada55; */
+  background: #64dcb8;
+}
+
+.lightmodeForm input:checked + label:after {
+  left: calc(100% - 2.5%);
+  transform: translateX(-100%);
+}
+
+.lightmodeForm label:active:after {
+  width: 55%;
+}
+
+
+
+
+/**** Lightmode interface ****/
+
+
+
+
+/****Lightmode nav ****/
+
+.lightmode .menu > li a  {
+  color: #565656;
+}
+.lightmode .menu > li  {
+  color: #565656;
+}
+
+
+.lightmode {
+  background-color: #fff;
+  color:#565656;
+}
+.lightmode .form, .lightmode #messageForm {
+  background-color: #EEF7FB;
+}
+
+.lightmode  .intro-text {
+  border-top: 1px solid #e4e2e2;
+}
+
+
+.lightmode .top-nav {
+  background-color: #00BAF0;
+  background: linear-gradient(to left, #B5FAE5, #4EA9CD);
+}
+
+
+.lightmode .main-footer {
+  background-color: #00BAF0;
+  background: linear-gradient(to left, #B5FAE5, #4EA9CD);
+  color: #565656;
+}
+
+
+
+
+
+/*********  Messages *****/
+
+
+
+.lightmode .message{
+  color:#33353d;
+  /* background: radial-gradient(circle, #8aecce 0%, #6be8c3 51%, #6be8c3 100%); */
+  background: none;
+  background-color:#4ea9cd44;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.lightmode .messageOfTheDay{
+  background: radial-gradient(circle, #00BAF0 0%, #30ccfb 51%, #02a1d2 100%);
+}
+
+.lightmode .message h3{
+  color:#414e4e;
+}
+
+.lightmode .messageHeader{
+  background-color: #4ea9cd38;
+}
+
+
+.lightmode .messageFooter{
+  background-color: #4ea9cd38;
+}
+
+
+
+@media only screen and (min-width: 701px) {
+  .lightmodeForm{
+    padding:10px 15px 10px 15px;
+    border-top: 1px solid #656464;
+    border-bottom: 1px solid #656464;
+  }  
+  .lightmode .lightmodeForm{
+    border-top: 1px solid #e4e2e2;
+    border-bottom: 1px solid #e4e2e2;
+    background-color: #ddf0f8;
+  }  
+
+}
+
+
+
+
+
+/**
+vanliga
+#6BE8C3
+#0076A5
+
+ljusa header
+B5FAE5
+4EA9CD
+
+formbg
+#EEF7FB
+
+text 
+565656
+
+
+4EA9CD
+
+***/

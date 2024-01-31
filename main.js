@@ -1,6 +1,7 @@
 import { db } from './modules/api.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js';
 import { displayMessage, handlePostForm, displayError } from './modules/messages.js';
+import { toggleDarkLightMode } from './modules/darklightmode.js';
 import * as cookies from './modules/cookies.js'; // Tims 
 import { scroll, scrollToTopFunction } from './modules/scrollToTop.js';// Elviras
 
@@ -18,6 +19,16 @@ onValue(messageDatabaseRef, (snapshot) => {
     displayError();
   }
 });
+
+
+
+/***** Button toggle dark/light mode ****/   
+const bodyEl = document.getElementById("#bodyEl"); 
+let modeChoice = document.querySelector("input[id=darklightModeChoice]");
+modeChoice.addEventListener('change', toggleDarkLightMode);
+
+
+
 
 /**** Scroll to top when user presses button (contributor Elvira Ericsson ) *****/ 
 window.addEventListener('scroll', scroll);

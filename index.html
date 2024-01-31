@@ -10,6 +10,7 @@
   <script type='module' src="main.js"></script>
   <link href="./css/mainstyles.css" rel="stylesheet" />
   <link href="./css/messages.css" rel="stylesheet" />
+  <link href="./css/light-mode.css" rel="stylesheet" />
 
   <link rel="apple-touch-icon" sizes="76x76" href="./img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
@@ -18,7 +19,7 @@
 
   <title>Gritsquare - Slutprojekt - Versionshantering</title>
 </head>
-<body>
+<body id="bodyEl">
   <header>
     <div class="top-nav">
       <div class="logo">
@@ -32,14 +33,16 @@
         <li>Hem</li>
         <li><a href="about.html">Om</a></li>
         <li><a href="contact.html">Kontakt</a></li>
+        <!-- <button id="darklightmode"><i class="fa-solid fa-moon"></i></button> -->
       </ul>
+      
     </div>  
   </header>
 
   <main>
     <!-- Elvira scroll to top --><button id="to-the-top-button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 
-  <div class="wrapper">
+  <div id="wrapper">
     <section class="form">
         <form id="messageForm">
           <div>
@@ -59,6 +62,12 @@
           <p>
             Välkommen till vår plattform för meddelanden! Här kan du fritt uttrycka dina tankar, dela idéer och kommunicera med andra användare. Vi ser fram emot att höra vad du har att säga. Skriv på och låt konversationen börja!</p>
         </div>
+
+          <div class="lightmodeForm">
+            <h5 class="vaxla">Växla mellan ljust/mörkt läge</h5>
+            <input type="checkbox" id="darklightModeChoice" name="darklightmodeSwitch" />
+            <label for="darklightModeChoice" class="modeChoice"></label>
+          </div>
     </section>
 
 
